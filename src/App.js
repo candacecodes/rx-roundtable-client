@@ -3,6 +3,7 @@ import "./App.css";
 import Login from "./components/home/Login";
 import Navbar from "./components/Navbar";
 import Home from "./components/home/Home";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
 	return (

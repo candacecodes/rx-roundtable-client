@@ -1,23 +1,23 @@
 import React from "react";
 import { Jumbotron, Container } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 
 export default function Home() {
 	return (
 		<div>
-			<Jumbotron fluid className="banner">
+			<Jumbotron fluid="true" className="banner">
 				<Container>
 					<h1>Rx Roundtable</h1>
 					<p>
-						<b>Rx: A Doctor's Prescription</b>
-						<br />
-						<br />
 						<i>
-							The "R" in "Rx" stands for the Latin word recipe, meaning "take,"
-							and the first doctor to use "Rx" used it as a verb with the same
-							meaning, "Rx two aspirin" being equivalent to today's "Take two
-							aspirin."
+							Rx: A Doctor's Prescription
+							<br />
+							Roundtable: Discussion to help guide with clear, specific points
+							and what you would like them to achieve.
 						</i>
 					</p>
+					<Button variant="outline-secondary">Login</Button>
+					<Button variant="outline-secondary">Sign Up</Button>
 				</Container>
 			</Jumbotron>
 		</div>
