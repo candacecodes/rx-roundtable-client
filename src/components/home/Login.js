@@ -7,11 +7,27 @@ export default class login extends Component {
 		return (
 			<div>
 				<Form>
+					Sign In
+					<Form.Group controlId="formBasicEmail">
+						<Form.Label>Username</Form.Label>
+						<Form.Control type="email" placeholder="Your Username" />
+					</Form.Group>
+					<Form.Group controlId="formBasicPassword">
+						<Form.Label>Password</Form.Label>
+						<Form.Control type="password" placeholder="Password" />
+					</Form.Group>
+					<Button variant="secondary" type="submit">
+						Submit
+					</Button>
+				</Form>
+				&nbsp;&nbsp; &nbsp;&nbsp;
+				<Form>
+					{" "}
+					Sign Up
 					<Form.Group controlId="formBasicEmail">
 						<Form.Label>Username</Form.Label>
 						<Form.Control type="email" placeholder="Create a username" />
 					</Form.Group>
-
 					<Form.Group controlId="formBasicPassword">
 						<Form.Label>Password</Form.Label>
 						<Form.Control type="password" placeholder="Password" />
