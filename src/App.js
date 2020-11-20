@@ -23,8 +23,8 @@ function App() {
 			</header> */}
 
 				<main id="page-wrap">
-					<Route exact path="/" component={Home} />
-					<Route exact path="/searchrx" component={FilterSearch} />
+					<Route exact path="/home" component={Home} />
+					<Route exact path="/rx" component={FilterSearch} />
 					<Route exact path="/profile" component={Profile} />
 				</main>
 			</div>
