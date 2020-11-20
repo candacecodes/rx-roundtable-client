@@ -7,7 +7,7 @@ export default class FilterSearch extends Component {
 		return (
 			<div>
 				<Form>
-					<Form.Group controlId="exampleForm.ControlSelect1">
+					{/* <Form.Group controlId="exampleForm.ControlSelect1">
 						<Form.Label>Sort By</Form.Label>
 						<Form.Control as="select">
 							<option>Rx type 1</option>
@@ -17,7 +17,7 @@ export default class FilterSearch extends Component {
 							<option>Rx type 5</option>
 						</Form.Control>
 						<Button variant="outline-secondary">Search</Button>
-					</Form.Group>
+					</Form.Group> */}
 
 					<Form.Group controlId="exampleForm.ControlTextarea1">
 						<Form.Label>Search</Form.Label>
