@@ -1,3 +1,6 @@
+## Rx (Prescription) Roundtable
+A JS-based project to help manage your medications and learn more about common prescriptions and their effects. 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
