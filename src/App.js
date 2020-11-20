@@ -15,7 +15,8 @@ function App() {
 				{/* <Navbar />
 				<Home /> */}
 				{/* <RxSingle /> */}
-				<FilterSearch />
+				{/* <FilterSearch /> */}
+				<Login />
 			</header>
 		</div>
 	);
