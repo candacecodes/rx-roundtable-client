@@ -6,6 +6,7 @@ import Home from "./components/home/Home";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Comment from "./components/AddCommentForm";
 import RxSingle from "./components/RxSingle";
+import FilterSearch from "./components/FilterSearch";
 
 function App() {
 	return (
@@ -13,7 +14,8 @@ function App() {
 			<header className="App-header">
 				{/* <Navbar />
 				<Home /> */}
-				<RxSingle />
+				{/* <RxSingle /> */}
+				<FilterSearch />
 			</header>
 		</div>
 	);
