@@ -24,6 +24,7 @@ function App() {
 
 				<main id="page-wrap">
 					<Route exact path="/home" component={Home} />
+					<Route exact path="/login" component={Login} />
 					<Route exact path="/rx" component={FilterSearch} />
 					<Route exact path="/profile" component={Profile} />
 				</main>
