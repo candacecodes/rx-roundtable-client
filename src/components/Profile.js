@@ -21,21 +21,21 @@ export default class Profile extends Component {
 													alt="User-Profile-Image"
 												> */}{" "}
 												</div>
-												<h6 className="f-w-600">Hembo Tingor</h6>
-												<p>Web Designer</p>{" "}
+												<h6 className="f-w-600">Patient Profile</h6>
+												<p>Patient Name</p>{" "}
 												<i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
 											</div>
 										</div>
 										<div className="col-sm-8">
 											<div className="card-block">
 												<h6 className="m-b-20 p-b-5 b-b-default f-w-600">
-													Information
+													Name
 												</h6>
 												<div className="row">
 													<div className="col-sm-6">
 														<p className="m-b-10 f-w-600">Email</p>
 														<h6 className="text-muted f-w-400">
-															rntng@gmail.com
+															whatever@gmail.com
 														</h6>
 													</div>
 													<div className="col-sm-6">
@@ -44,17 +44,19 @@ export default class Profile extends Component {
 													</div>
 												</div>
 												<h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">
-													Projects
+													Rx
 												</h6>
 												<div className="row">
 													<div className="col-sm-6">
-														<p className="m-b-10 f-w-600">Recent</p>
-														<h6 className="text-muted f-w-400">Sam Disuja</h6>
+														<p className="m-b-10 f-w-600">Rx 1 </p>
+														<h6 className="text-muted f-w-400">
+															Rx Information
+														</h6>
 													</div>
 													<div className="col-sm-6">
-														<p className="m-b-10 f-w-600">Most Viewed</p>
+														<p className="m-b-10 f-w-600">Rx 2</p>
 														<h6 className="text-muted f-w-400">
-															Dinoter husainm
+															Rx Information
 														</h6>
 													</div>
 												</div>
