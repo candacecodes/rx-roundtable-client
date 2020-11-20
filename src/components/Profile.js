@@ -5,6 +5,8 @@ export default class Profile extends Component {
 	render() {
 		return (
 			<>
+				<Navbar />
+
 				<div className="page-content page-container" id="page-content">
 					<div className="padding">
 						<div className="row container d-flex justify-content-center">
