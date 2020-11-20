@@ -4,6 +4,31 @@ import Button from "react-bootstrap/Button";
 import RxContainer from "../containers/RxContainer";
 
 export default class FilterSearch extends Component {
+	componentDidMount() {
+		fetch(
+			"https://api.fda.gov/drug/label.json?count=openfda.product_type.exact"
+		)
+			.then((res) => res.json())
+			.then((json) => console.log(json));
+		//   .then(
+		// 	(result) => {
+		// 	  this.setState({
+		// 		isLoaded: true,
+		// 		items: result.items
+		// 	  });
+		// 	},
+		// 	// Note: it's important to handle errors here
+		// 	// instead of a catch() block so that we don't swallow
+		// 	// exceptions from actual bugs in components.
+		// 	(error) => {
+		// 	  this.setState({
+		// 		isLoaded: true,
+		// 		error
+		// 	  });
+		// 	}
+		//   )
+	}
+
 	render() {
 		return (
 			<>
