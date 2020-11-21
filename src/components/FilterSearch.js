@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import RxContainer from "../containers/RxContainer";
+import Navbar from "./Navbar";
 
 export default class FilterSearch extends Component {
 	componentDidMount() {
@@ -32,6 +33,9 @@ export default class FilterSearch extends Component {
 	render() {
 		return (
 			<>
+				<Navbar />
+				<br />
+				<br />
 				<div>
 					<Form>
 						<Form.Group controlId="exampleForm.ControlTextarea1">
