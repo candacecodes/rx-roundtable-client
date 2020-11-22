@@ -3,6 +3,25 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 export default class login extends Component {
+	state = {
+		error: false,
+		inputs: {
+			username: "",
+			password: "",
+		},
+	};
+
+	handleChange = (e) => {
+		const newInputs = { ...this.state.inputs, [e.target.name]: e.target.value };
+		this.setState({
+			inputs: newInputs,
+		});
+	};
+
+	handleSubmit = (e) => {
+		e.preventDefault();
+	};
+
 	render() {
 		return (
 			<div>
