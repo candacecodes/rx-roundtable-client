@@ -10,7 +10,7 @@ export default class login extends Component {
 					Sign In
 					<Form.Group controlId="formBasicEmail">
 						<Form.Label>Username</Form.Label>
-						<Form.Control type="email" placeholder="Your Username" />
+						<Form.Control type="name" placeholder="Your Username" />
 					</Form.Group>
 					<Form.Group controlId="formBasicPassword">
 						<Form.Label>Password</Form.Label>
@@ -26,7 +26,7 @@ export default class login extends Component {
 					Sign Up
 					<Form.Group controlId="formBasicEmail">
 						<Form.Label>Username</Form.Label>
-						<Form.Control type="email" placeholder="Create a username" />
+						<Form.Control type="name" placeholder="Create a username" />
 					</Form.Group>
 					<Form.Group controlId="formBasicPassword">
 						<Form.Label>Password</Form.Label>
