@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 
 export default class login extends Component {
 	state = {
-		error: false,
+		// error: false,
 		inputs: {
 			username: "",
 			password: "",
