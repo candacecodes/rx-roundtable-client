@@ -4,48 +4,30 @@ import Button from "react-bootstrap/Button";
 
 export default class login extends Component {
 	state = {
-		// error: false,
-		inputs: {
-			username: "",
-			password: "",
-		},
+		username: "",
+		password: "",
 	};
 
 	handleChange = (e) => {
-		const newInputs = { ...this.state.inputs, [e.target.name]: e.target.value };
+		let { name, value } = e.target;
 		this.setState({
-			inputs: newInputs,
+			[name]: value,
 		});
 	};
 
 	handleSubmit = (e) => {
 		e.preventDefault();
+		this.props.handleSubmit(this.state);
 	};
 
 	render() {
 		return (
 			<div>
-				<Form>
-					Sign In
+				<Form onSubmit={this.handleSubmit}>
+					<h1>{this.props.name}</h1>
 					<Form.Group controlId="formBasicEmail">
 						<Form.Label>Username</Form.Label>
 						<Form.Control type="name" placeholder="Your Username" />
-					</Form.Group>
-					<Form.Group controlId="formBasicPassword">
-						<Form.Label>Password</Form.Label>
-						<Form.Control type="password" placeholder="Password" />
-					</Form.Group>
-					<Button variant="secondary" type="submit">
-						Submit
-					</Button>
-				</Form>
-				&nbsp;&nbsp; &nbsp;&nbsp;
-				<Form>
-					{" "}
-					Sign Up
-					<Form.Group controlId="formBasicEmail">
-						<Form.Label>Username</Form.Label>
-						<Form.Control type="name" placeholder="Create a username" />
 					</Form.Group>
 					<Form.Group controlId="formBasicPassword">
 						<Form.Label>Password</Form.Label>

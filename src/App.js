@@ -18,6 +18,47 @@ class App extends Component {
 		},
 	};
 
+	renderForm = (routerProps) => {
+		console.log(routerProps);
+		if (routerProps.location.pathname === "/login") {
+			return <Login name="Login Form" handleSubmit={this.handleLogin} />;
+		} else if (routerProps.location.pathname === "/signup") {
+			return <Login name="Signup Form" handleSubmit={this.handleSignup} />;
+		}
+	};
+
+	//auth
+	handleLogin = (info) => {
+		console.log("login");
+		this.handleAuthFetch(info, "http://localhost:3000/login");
+	};
+
+	handleSignup = (info) => {
+		console.log("sign up");
+		this.handleAuthFetch(info, "http://localhost:3000/users");
+	};
+
+	handleAuthFetch = (info, request) => {
+		fetch(request, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				username: info.username,
+				password: info.password,
+			}),
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				this.setState({ user: data.user, token: data.token }, () => {
+					console.log(this.state);
+					this.props.history.push("/");
+				});
+			});
+	};
+
 	render() {
 		return (
 			<Router>
@@ -32,7 +73,7 @@ class App extends Component {
 
 					<main id="page-wrap">
 						<Route exact path="/home" component={Home} />
-						<Route exact path="/login" component={Login} />
+						<Route exact path="/login" component={this.renderForm} />
 						<Route exact path="/rx" component={FilterSearch} />
 						<Route exact path="/profile" component={Profile} />
 					</main>
