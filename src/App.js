@@ -1,13 +1,9 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Login from "./components/home/Login";
-import Navbar from "./components/Navbar";
 import Home from "./components/home/Home";
 import Welcome from "./components/home/Welcome";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Comment from "./components/AddCommentForm";
-import RxSingle from "./components/RxSingle";
 import FilterSearch from "./components/FilterSearch";
 import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
 import Profile from "./components/Profile";
@@ -23,24 +19,37 @@ class App extends Component {
 	renderForm = (routerProps) => {
 		console.log(routerProps);
 		if (routerProps.location.pathname === "/login") {
-			return <Login name="Login" handleSubmit={this.handleLogin} />;
+			return (
+				<Login
+					name="Login"
+					handleSubmit={this.handleLogin}
+					{...routerProps} // access to router props
+				/>
+			);
 		} else if (routerProps.location.pathname === "/signup") {
-			return <Login name="Signup" handleSubmit={this.handleSignup} />;
+			return (
+				<Login
+					name="Signup"
+					handleSubmit={this.handleSignup}
+					// props={this.state.routerProps}
+					{...routerProps} // access to router props
+				/>
+			);
 		}
 	};
 
 	//auth
-	handleLogin = (info) => {
+	handleLogin = (info, history) => {
 		console.log("login");
-		this.handleAuthFetch(info, "http://localhost:3000/login");
+		this.handleAuthFetch(info, "http://localhost:3000/login", history);
 	};
 
-	handleSignup = (info) => {
+	handleSignup = (info, history) => {
 		console.log("sign up");
-		this.handleAuthFetch(info, "http://localhost:3000/users");
+		this.handleAuthFetch(info, "http://localhost:3000/users", history);
 	};
 
-	handleAuthFetch = (info, request) => {
+	handleAuthFetch = (info, request, history) => {
 		fetch(request, {
 			method: "POST",
 			headers: {
@@ -57,9 +66,8 @@ class App extends Component {
 			.then((data) => {
 				console.log(data);
 				this.setState({ user: data, token: data.token }, () => {
-					console.log(this.state);
-					console.log(this.props.history);
-					this.props.history.push("/home");
+					console.log(this.props);
+					history.push("/home");
 				});
 			});
 	};

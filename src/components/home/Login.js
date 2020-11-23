@@ -18,7 +18,7 @@ export default class login extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		this.props.handleSubmit(this.state);
+		this.props.handleSubmit(this.state, this.props.history);
 	};
 
 	render() {
