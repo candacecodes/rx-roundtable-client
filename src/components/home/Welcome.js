@@ -6,7 +6,6 @@ const Welcome = (props) => {
 	return (
 		<div className="item">
 			<h1> Welcome {props.username} </h1>
-			<Home />{" "}
 		</div>
 	);
 };

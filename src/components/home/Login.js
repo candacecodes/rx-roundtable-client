@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Home from "./Home";
+import Welcome from "./Welcome";
 
 export default class login extends Component {
 	state = {
