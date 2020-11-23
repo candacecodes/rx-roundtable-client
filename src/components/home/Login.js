@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Home from "./Home";
 
 export default class login extends Component {
 	state = {
@@ -22,28 +23,31 @@ export default class login extends Component {
 
 	render() {
 		return (
-			<form onSubmit={this.handleSubmit}>
-				<h1>{this.props.name}</h1>
-				<label htmlFor="username">Username:</label>
-				<br />
-				<input
-					type="text"
-					name="username"
-					value={this.state.username}
-					onChange={this.handleChange}
-				/>{" "}
-				<br /> <br />
-				<label htmlFor="password">Password:</label>
-				<br />
-				<input
-					type="password"
-					name="password"
-					value={this.state.password}
-					onChange={this.handleChange}
-				/>
-				<br /> <br />
-				<input type="submit" value="Submit" />
-			</form>
+			<>
+				<Home />
+				<form onSubmit={this.handleSubmit}>
+					<h1>{this.props.name}</h1>
+					<label htmlFor="username">Username:</label>
+					<br />
+					<input
+						type="text"
+						name="username"
+						value={this.state.username}
+						onChange={this.handleChange}
+					/>{" "}
+					<br /> <br />
+					<label htmlFor="password">Password:</label>
+					<br />
+					<input
+						type="password"
+						name="password"
+						value={this.state.password}
+						onChange={this.handleChange}
+					/>
+					<br /> <br />
+					<input type="submit" value="Submit" />
+				</form>
+			</>
 		);
 	}
 }

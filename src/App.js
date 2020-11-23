@@ -44,8 +44,10 @@ class App extends Component {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				username: info.username,
-				password: info.password,
+				user: {
+					username: info.username,
+					password: info.password,
+				},
 			}),
 		})
 			.then((res) => res.json())
@@ -69,9 +71,9 @@ class App extends Component {
 				<FilterSearch />
 				<Login />
 			</header> */}
-
 					<main id="page-wrap">
-						<Route exact path="" component={Home} />
+						<Route exact path="/" component={Home} />
+						<Route exact path="/home" component={Home} />
 						<Route exact path="/login" component={this.renderForm} />
 						<Route path="/signup" exact component={this.renderForm} />
 						<Route exact path="/rx" component={FilterSearch} />
