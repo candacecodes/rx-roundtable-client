@@ -22,22 +22,27 @@ export default class login extends Component {
 
 	render() {
 		return (
-			<div>
-				<Form onSubmit={this.handleSubmit}>
-					<h1>{this.props.name}</h1>
-					<Form.Group controlId="formBasicEmail">
-						<Form.Label>Username</Form.Label>
-						<Form.Control type="name" placeholder="Your Username" />
-					</Form.Group>
-					<Form.Group controlId="formBasicPassword">
-						<Form.Label>Password</Form.Label>
-						<Form.Control type="password" placeholder="Password" />
-					</Form.Group>
-					<Button variant="secondary" type="submit">
-						Submit
-					</Button>
-				</Form>
-			</div>
+			<form onSubmit={this.handleSubmit}>
+				<h1>{this.props.name}</h1>
+				<label htmlFor="username">Username:</label>
+				<br />
+				<input
+					type="text"
+					name="username"
+					value={this.state.username}
+					onChange={this.handleChange}
+				/>{" "}
+				<br /> <br />
+				<label htmlFor="password">Password:</label>
+				<br />
+				<input
+					type="password"
+					name="password"
+					value={this.state.password}
+					onChange={this.handleChange}
+				/>
+				<input type="submit" value="Submit" />
+			</form>
 		);
 	}
 }
