@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 
 export default class Profile extends Component {
 	render() {
-		console.log(this.props);
+		console.log(this.props.username);
 		return (
 			<>
 				<Navbar />
@@ -17,7 +17,7 @@ export default class Profile extends Component {
 										<div className="col-sm-4 bg-c-lite-green user-profile">
 											<div className="card-block text-center text-white">
 												<div className="m-b-25">
-													{" "}
+													{this.props.username}
 													{/* <img
 													src="https://img.icons8.com/bubbles/100/000000/user.png"
 													className="img-radius"

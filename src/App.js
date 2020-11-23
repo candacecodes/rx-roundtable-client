@@ -10,7 +10,9 @@ import Profile from "./components/Profile";
 
 class App extends Component {
 	state = {
-		user: "",
+		id: "",
+		username: "",
+		result: [],
 	};
 
 	handleHome = () => <Welcome username={this.state.user.username} />;
@@ -64,11 +66,22 @@ class App extends Component {
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
-				this.setState({ user: data }, () => {
-					console.log(data);
-					history.push("/profile");
-				});
+				this.setState(
+					{ username: data.user.username, id: data.user.id },
+					() => {
+						console.log(data);
+						history.push("/profile");
+					}
+				);
 			});
+	};
+
+	handleSearch = (search) => {
+		const url = `https://api.fda.gov/drug/event.json?api_key=erNcZBRL2Jy0yJru61XsO98hXqdGtYKs6QjGJTY8&search=`;
+		const response = fetch(`url${search}`);
+		const data = response.json();
+		console.log(data);
+		this.setState({ result: data.results[0] });
 	};
 
 	render() {
@@ -81,12 +94,19 @@ class App extends Component {
 						<Route exact path="/login" component={this.renderForm} />
 						{/* if user in state redirect to home  */}
 						<Route path="/signup" exact component={this.renderForm} />
-						<Route exact path="/rx" component={FilterSearch} />
+						<Route
+							exact
+							path="/rx"
+							component={FilterSearch}
+							handleSearch={this.handleSearch}
+							result={this.state.result}
+						/>
 						<Route
 							exact
 							path="/profile"
-							component={Profile}
-							user={this.state.user}
+							render={() => <Profile user={this.state.username} />}
+							// component={Profile}
+							// user={this.state.user}
 						/>
 					</main>
 				</div>

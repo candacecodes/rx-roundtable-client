@@ -21,7 +21,7 @@ export default class RxContainer extends Component {
 		return (
 			<div>
 				<div className="header">Search Results</div>
-				{/* <div>{this.renderRx()}</div> */}
+				<div>{this.props.result}</div>
 			</div>
 		);
 	}

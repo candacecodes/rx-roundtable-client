@@ -16,9 +16,9 @@ export default class FilterSearch extends Component {
 		});
 	};
 
-	handleSubmit = (e) => {
+	handleSearch = (e) => {
 		e.preventDefault();
-		this.props.handleSubmit(this.state, this.props.history);
+		this.props.handleSearch(this.state);
 	};
 
 	componentDidMount() {
@@ -47,6 +47,7 @@ export default class FilterSearch extends Component {
 	}
 
 	render() {
+		console.log(this.props);
 		return (
 			<>
 				<Navbar />
@@ -68,7 +69,11 @@ export default class FilterSearch extends Component {
 							<Button variant="outline-secondary">Search</Button>
 						</Form.Group>
 					</Form>
-					<RxContainer />
+					{this.state.search ? (
+						<RxContainer result={this.props.result} />
+					) : (
+						<div>No Results from Search</div>
+					)}
 				</div>
 			</>
 		);
