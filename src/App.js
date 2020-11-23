@@ -13,9 +13,8 @@ import Profile from "./components/Profile";
 
 class App extends Component {
 	state = {
-		auth: {
-			user: {},
-		},
+		user: "",
+		token: "",
 	};
 
 	renderForm = (routerProps) => {
@@ -54,7 +53,7 @@ class App extends Component {
 				console.log(data);
 				this.setState({ user: data.user, token: data.token }, () => {
 					console.log(this.state);
-					this.props.history.push("/");
+					this.props.history.push("/home");
 				});
 			});
 	};
