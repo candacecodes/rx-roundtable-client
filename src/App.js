@@ -74,6 +74,7 @@ class App extends Component {
 					<main id="page-wrap">
 						<Route exact path="/home" component={Home} />
 						<Route exact path="/login" component={this.renderForm} />
+						<Route path="/signup" exact component={this.renderForm} />
 						<Route exact path="/rx" component={FilterSearch} />
 						<Route exact path="/profile" component={Profile} />
 					</main>
