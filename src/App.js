@@ -9,7 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Comment from "./components/AddCommentForm";
 import RxSingle from "./components/RxSingle";
 import FilterSearch from "./components/FilterSearch";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
 import Profile from "./components/Profile";
 
 class App extends Component {
@@ -58,6 +58,8 @@ class App extends Component {
 				console.log(data);
 				this.setState({ user: data, token: data.token }, () => {
 					console.log(this.state);
+					console.log(this.props.history);
+					this.props.history.push("/home");
 				});
 			});
 	};
@@ -66,17 +68,11 @@ class App extends Component {
 		return (
 			<Router>
 				<div className="App">
-					{/* <header className="App-header">
-				<Navbar />
-				<Home />
-				<RxSingle />
-				<FilterSearch />
-				<Login />
-			</header> */}
 					<main id="page-wrap">
 						<Route exact path="/" component={this.handleHome} />
 						<Route exact path="/home" component={Home} />
 						<Route exact path="/login" component={this.renderForm} />
+						{/* if user in state redirect to home  */}
 						<Route path="/signup" exact component={this.renderForm} />
 						<Route exact path="/rx" component={FilterSearch} />
 						<Route exact path="/profile" component={Profile} />
