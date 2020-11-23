@@ -5,9 +5,25 @@ import RxContainer from "../containers/RxContainer";
 import Navbar from "./Navbar";
 
 export default class FilterSearch extends Component {
+	state = {
+		search: "",
+	};
+
+	handleChange = (e) => {
+		let { name, value } = e.target;
+		this.setState({
+			[name]: value,
+		});
+	};
+
+	handleSubmit = (e) => {
+		e.preventDefault();
+		this.props.handleSubmit(this.state, this.props.history);
+	};
+
 	componentDidMount() {
 		fetch(
-			"https://api.fda.gov/drug/label.json?count=openfda.product_type.exact"
+			`https://api.fda.gov/drug/event.json?api_key=erNcZBRL2Jy0yJru61XsO98hXqdGtYKs6QjGJTY8&search=${this.state.entry}`
 		)
 			.then((res) => res.json())
 			.then((json) => console.log(json));
@@ -40,7 +56,15 @@ export default class FilterSearch extends Component {
 					<Form>
 						<Form.Group controlId="exampleForm.ControlTextarea1">
 							<Form.Label>Search Medications </Form.Label>
-							<Form.Control as="textarea" rows={1} />
+							<Form.Control
+								as="textarea"
+								type="text"
+								name="search"
+								value={this.state.search}
+								onChange={this.handleChange}
+								rows={1}
+							/>{" "}
+							<br />
 							<Button variant="outline-secondary">Search</Button>
 						</Form.Group>
 					</Form>

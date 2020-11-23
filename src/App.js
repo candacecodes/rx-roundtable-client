@@ -11,7 +11,6 @@ import Profile from "./components/Profile";
 class App extends Component {
 	state = {
 		user: "",
-		token: "",
 	};
 
 	handleHome = () => <Welcome username={this.state.user.username} />;
@@ -65,8 +64,8 @@ class App extends Component {
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
-				this.setState({ user: data, token: data.token }, () => {
-					console.log(this.props);
+				this.setState({ user: data }, () => {
+					console.log(data);
 					history.push("/profile");
 				});
 			});

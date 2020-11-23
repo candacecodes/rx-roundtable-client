@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 
 export default class Profile extends Component {
 	render() {
-		console.log(this.props.user);
+		console.log(this.props);
 		return (
 			<>
 				<Navbar />
