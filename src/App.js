@@ -4,6 +4,7 @@ import "./App.css";
 import Login from "./components/home/Login";
 import Navbar from "./components/Navbar";
 import Home from "./components/home/Home";
+import Welcome from "./components/home/Welcome";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Comment from "./components/AddCommentForm";
 import RxSingle from "./components/RxSingle";
@@ -16,6 +17,8 @@ class App extends Component {
 		user: "",
 		token: "",
 	};
+
+	handleHome = () => <Welcome username={this.state.user.username} />;
 
 	renderForm = (routerProps) => {
 		console.log(routerProps);
@@ -53,9 +56,8 @@ class App extends Component {
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
-				this.setState({ user: data.user, token: data.token }, () => {
+				this.setState({ user: data, token: data.token }, () => {
 					console.log(this.state);
-					this.props.history.push("/home");
 				});
 			});
 	};
@@ -72,7 +74,7 @@ class App extends Component {
 				<Login />
 			</header> */}
 					<main id="page-wrap">
-						<Route exact path="/" component={Home} />
+						<Route exact path="/" component={this.handleHome} />
 						<Route exact path="/home" component={Home} />
 						<Route exact path="/login" component={this.renderForm} />
 						<Route path="/signup" exact component={this.renderForm} />
