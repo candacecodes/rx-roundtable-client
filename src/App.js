@@ -21,9 +21,9 @@ class App extends Component {
 	renderForm = (routerProps) => {
 		console.log(routerProps);
 		if (routerProps.location.pathname === "/login") {
-			return <Login name="Login Form" handleSubmit={this.handleLogin} />;
+			return <Login name="Login" handleSubmit={this.handleLogin} />;
 		} else if (routerProps.location.pathname === "/signup") {
-			return <Login name="Signup Form" handleSubmit={this.handleSignup} />;
+			return <Login name="Signup" handleSubmit={this.handleSignup} />;
 		}
 	};
 
