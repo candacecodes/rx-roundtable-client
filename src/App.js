@@ -67,7 +67,7 @@ class App extends Component {
 				console.log(data);
 				this.setState({ user: data, token: data.token }, () => {
 					console.log(this.props);
-					history.push("/home");
+					history.push("/profile");
 				});
 			});
 	};
@@ -83,7 +83,12 @@ class App extends Component {
 						{/* if user in state redirect to home  */}
 						<Route path="/signup" exact component={this.renderForm} />
 						<Route exact path="/rx" component={FilterSearch} />
-						<Route exact path="/profile" component={Profile} />
+						<Route
+							exact
+							path="/profile"
+							component={Profile}
+							user={this.state.user}
+						/>
 					</main>
 				</div>
 			</Router>
