@@ -2,6 +2,7 @@ import React from "react";
 import { Jumbotron, Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Navbar from "../Navbar";
+import { NavLink } from "react-router-dom";
 
 export default function Home() {
 	return (
@@ -18,8 +19,14 @@ export default function Home() {
 							and what you would like them to achieve.
 						</i>
 					</p>
-					<Button variant="outline-secondary">Login</Button>
-					<Button variant="outline-secondary">Sign Up</Button>
+					<NavLink className="loginButton" to="/login">
+						{" "}
+						Login{" "}
+					</NavLink>
+					<NavLink className="loginButton" to="/signup">
+						{" "}
+						Sign Up{" "}
+					</NavLink>
 				</Container>
 			</Jumbotron>
 		</div>

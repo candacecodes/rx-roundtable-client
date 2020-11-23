@@ -1,61 +1,54 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Home from "./Home";
+import Welcome from "./Welcome";
 
 export default class login extends Component {
 	state = {
-		// error: false,
-		inputs: {
-			username: "",
-			password: "",
-		},
+		username: "",
+		password: "",
 	};
 
 	handleChange = (e) => {
-		const newInputs = { ...this.state.inputs, [e.target.name]: e.target.value };
+		let { name, value } = e.target;
 		this.setState({
-			inputs: newInputs,
+			[name]: value,
 		});
 	};
 
 	handleSubmit = (e) => {
 		e.preventDefault();
+		this.props.handleSubmit(this.state, this.props.history);
 	};
 
 	render() {
 		return (
-			<div>
-				<Form>
-					Sign In
-					<Form.Group controlId="formBasicEmail">
-						<Form.Label>Username</Form.Label>
-						<Form.Control type="name" placeholder="Your Username" />
-					</Form.Group>
-					<Form.Group controlId="formBasicPassword">
-						<Form.Label>Password</Form.Label>
-						<Form.Control type="password" placeholder="Password" />
-					</Form.Group>
-					<Button variant="secondary" type="submit">
-						Submit
-					</Button>
-				</Form>
-				&nbsp;&nbsp; &nbsp;&nbsp;
-				<Form>
-					{" "}
-					Sign Up
-					<Form.Group controlId="formBasicEmail">
-						<Form.Label>Username</Form.Label>
-						<Form.Control type="name" placeholder="Create a username" />
-					</Form.Group>
-					<Form.Group controlId="formBasicPassword">
-						<Form.Label>Password</Form.Label>
-						<Form.Control type="password" placeholder="Password" />
-					</Form.Group>
-					<Button variant="secondary" type="submit">
-						Submit
-					</Button>
-				</Form>
-			</div>
+			<>
+				<Home />
+				<form onSubmit={this.handleSubmit}>
+					<h1>{this.props.name}</h1>
+					<label htmlFor="username">Username:</label>
+					<br />
+					<input
+						type="text"
+						name="username"
+						value={this.state.username}
+						onChange={this.handleChange}
+					/>{" "}
+					<br /> <br />
+					<label htmlFor="password">Password:</label>
+					<br />
+					<input
+						type="password"
+						name="password"
+						value={this.state.password}
+						onChange={this.handleChange}
+					/>
+					<br /> <br />
+					<input type="submit" value="Submit" />
+				</form>
+			</>
 		);
 	}
 }
