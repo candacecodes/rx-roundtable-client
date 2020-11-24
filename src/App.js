@@ -138,7 +138,9 @@ class App extends Component {
 						<Route
 							exact
 							path="/profile"
-							render={() => <Profile user={this.state.username} />}
+							render={() => (
+								<Profile user={this.state.username} id={this.state.id} />
+							)}
 							// component={Profile}
 							// user={this.state.user}
 						/>
