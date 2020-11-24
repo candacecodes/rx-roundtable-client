@@ -12,9 +12,6 @@ import ls from "local-storage";
 class App extends Component {
 	state = {
 		result: [],
-		auth: {
-			user: {},
-		},
 	};
 
 	handleHome = () => <Welcome username={this.state.user.username} />;
@@ -56,11 +53,11 @@ class App extends Component {
 		// console.log(data);
 		// holds {jwt, user: {id, username}}
 		const updatedState = {
-			...this.state.auth,
+			...this.state,
 			user: { id: data.user.id, username: data.user.username },
 		};
 		localStorage.setItem("token", data.jwt);
-		this.setState({ auth: updatedState });
+		this.setState({ user: updatedState });
 		console.log(this.state);
 	};
 
