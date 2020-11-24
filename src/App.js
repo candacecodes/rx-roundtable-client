@@ -58,6 +58,12 @@ class App extends Component {
 	handlePersist = (data) => {
 		console.log(data);
 		// holds {jwt, user: {id, username}}
+		const updatedState = {
+			...this.state.auth,
+			user: { id: data.user.id, username: data.user.username },
+		};
+		localStorage.setItem("token", data.jwt);
+		this.setState({ auth: updatedState });
 	};
 
 	handleAuthFetch = (info, request, history) => {
@@ -95,6 +101,11 @@ class App extends Component {
 		this.setState({ result: data.results[0] });
 		console.log(this.state.result);
 	};
+
+	componentDidMount() {
+		// get token
+		const token = localStorage.getItem("token");
+	}
 
 	render() {
 		return (
