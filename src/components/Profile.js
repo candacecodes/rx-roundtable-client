@@ -3,6 +3,10 @@ import Navbar from "./Navbar";
 import Button from "react-bootstrap/Button";
 
 export default class Profile extends Component {
+	state = {
+		editable: false,
+	};
+
 	render() {
 		return (
 			<>

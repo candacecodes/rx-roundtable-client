@@ -16,8 +16,9 @@ export default class FilterSearch extends Component {
 		});
 	};
 
-	handleSearch = (e) => {
+	localHandleSearch = (e) => {
 		e.preventDefault();
+		// console.log(this.state);
 		this.props.handleSearch(this.state);
 	};
 
@@ -47,7 +48,7 @@ export default class FilterSearch extends Component {
 	}
 
 	render() {
-		console.log(this.props);
+		console.log(this.state);
 		return (
 			<>
 				<Navbar />
@@ -66,7 +67,12 @@ export default class FilterSearch extends Component {
 								rows={1}
 							/>{" "}
 							<br />
-							<Button variant="outline-secondary">Search</Button>
+							<Button
+								onClick={this.localHandleSearch}
+								variant="outline-secondary"
+							>
+								Search
+							</Button>
 						</Form.Group>
 					</Form>
 					{this.state.search ? (

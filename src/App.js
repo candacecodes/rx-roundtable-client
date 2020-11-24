@@ -97,7 +97,7 @@ class App extends Component {
 						<Route
 							exact
 							path="/rx"
-							component={FilterSearch}
+							render={() => <FilterSearch />}
 							handleSearch={this.handleSearch}
 							result={this.state.result}
 						/>
