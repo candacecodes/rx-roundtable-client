@@ -11,10 +11,7 @@ import ls from "local-storage";
 
 class App extends Component {
 	state = {
-		id: "",
-		username: "",
 		result: [],
-		token: "",
 		auth: {
 			user: {},
 		},
@@ -56,7 +53,7 @@ class App extends Component {
 	};
 
 	handlePersist = (data) => {
-		console.log(data);
+		// console.log(data);
 		// holds {jwt, user: {id, username}}
 		const updatedState = {
 			...this.state.auth,
@@ -64,6 +61,7 @@ class App extends Component {
 		};
 		localStorage.setItem("token", data.jwt);
 		this.setState({ auth: updatedState });
+		console.log(this.state);
 	};
 
 	handleAuthFetch = (info, request, history) => {
@@ -83,10 +81,10 @@ class App extends Component {
 			.then((data) => {
 				this.handlePersist(data);
 				this.setState(
-					{ username: data.user.username, id: data.user.id, token: data.token },
+					{ username: data.user.username, id: data.user.id },
 					() => {
 						history.push("/profile");
-						console.log(this.state);
+						// console.log(this.state);
 					}
 				);
 			});
@@ -107,7 +105,7 @@ class App extends Component {
 
 		let token = localStorage.getItem("token");
 		if (token) {
-			fetch("http://localhost:3000", {
+			fetch("http://localhost:3000/profile", {
 				headers: {
 					Authorization: `Bearer ${token}`,
 				},
@@ -115,7 +113,7 @@ class App extends Component {
 				.then((res) => res.json())
 				.then((user) => {
 					console.log(user);
-					// this.setState({user: user})
+					this.setState({ user: user });
 				});
 		}
 	}
