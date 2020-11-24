@@ -103,8 +103,21 @@ class App extends Component {
 	};
 
 	componentDidMount() {
-		// get token
-		const token = localStorage.getItem("token");
+		// holds {jwt, user: {id, username}}
+
+		let token = localStorage.getItem("token");
+		if (token) {
+			fetch("http://localhost:3000", {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			})
+				.then((res) => res.json())
+				.then((user) => {
+					console.log(user);
+					// this.setState({user: user})
+				});
+		}
 	}
 
 	render() {
