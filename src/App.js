@@ -15,12 +15,15 @@ class App extends Component {
 		username: "",
 		result: [],
 		token: "",
+		auth: {
+			user: {},
+		},
 	};
 
 	handleHome = () => <Welcome username={this.state.user.username} />;
 
 	renderForm = (routerProps) => {
-		console.log(routerProps);
+		// console.log(routerProps);
 		if (routerProps.location.pathname === "/login") {
 			return (
 				<Login
