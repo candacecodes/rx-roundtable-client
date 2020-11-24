@@ -69,7 +69,7 @@ class App extends Component {
 			.then((data) => {
 				console.log(data);
 				this.setState(
-					{ username: data.user.username, id: data.user.id, token: data.jwt },
+					{ username: data.user.username, id: data.user.id, token: data.token },
 					() => {
 						history.push("/profile");
 						console.log(this.state);
@@ -79,8 +79,8 @@ class App extends Component {
 	};
 
 	handleSearch = (search) => {
-		const url = `https://api.fda.gov/drug/event.json?api_key=erNcZBRL2Jy0yJru61XsO98hXqdGtYKs6QjGJTY8&search=`;
-		const response = fetch(`url${search}`);
+		const URL = `https://api.fda.gov/drug/event.json?api_key=erNcZBRL2Jy0yJru61XsO98hXqdGtYKs6QjGJTY8&search=`;
+		const response = fetch(`URL${search}`);
 		console.log(response);
 		const data = response.json();
 		console.log(data);
