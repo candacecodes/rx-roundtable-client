@@ -52,6 +52,10 @@ class App extends Component {
 		this.handleAuthFetch(info, "http://localhost:3000/users", history);
 	};
 
+	handlePersist = (data) => {
+		console.log(data);
+	};
+
 	handleAuthFetch = (info, request, history) => {
 		fetch(request, {
 			method: "POST",
@@ -67,7 +71,7 @@ class App extends Component {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
+				this.handlePersist(data);
 				this.setState(
 					{ username: data.user.username, id: data.user.id, token: data.token },
 					() => {
