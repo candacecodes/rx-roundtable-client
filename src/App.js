@@ -57,6 +57,7 @@ class App extends Component {
 
 	handlePersist = (data) => {
 		console.log(data);
+		// holds {jwt, user: {id, username}}
 	};
 
 	handleAuthFetch = (info, request, history) => {
