@@ -7,12 +7,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import FilterSearch from "./components/FilterSearch";
 import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
 import Profile from "./components/Profile";
+import ls from "local-storage";
 
 class App extends Component {
 	state = {
 		id: "",
 		username: "",
 		result: [],
+		token: "",
 	};
 
 	handleHome = () => <Welcome username={this.state.user.username} />;
@@ -67,10 +69,10 @@ class App extends Component {
 			.then((data) => {
 				console.log(data);
 				this.setState(
-					{ username: data.user.username, id: data.user.id },
+					{ username: data.user.username, id: data.user.id, token: data.jwt },
 					() => {
-						console.log(data);
 						history.push("/profile");
+						console.log(this.state);
 					}
 				);
 			});
@@ -79,9 +81,11 @@ class App extends Component {
 	handleSearch = (search) => {
 		const url = `https://api.fda.gov/drug/event.json?api_key=erNcZBRL2Jy0yJru61XsO98hXqdGtYKs6QjGJTY8&search=`;
 		const response = fetch(`url${search}`);
+		console.log(response);
 		const data = response.json();
 		console.log(data);
 		this.setState({ result: data.results[0] });
+		console.log(this.state.result);
 	};
 
 	render() {
@@ -97,9 +101,12 @@ class App extends Component {
 						<Route
 							exact
 							path="/rx"
-							render={() => <FilterSearch />}
-							handleSearch={this.handleSearch}
-							result={this.state.result}
+							render={() => (
+								<FilterSearch
+									handleSearch={this.handleSearch}
+									result={this.state.result}
+								/>
+							)}
 						/>
 						<Route
 							exact
