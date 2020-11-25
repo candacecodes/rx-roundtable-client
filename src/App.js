@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Login from "./components/home/Login";
+import Logout from "./components/home/Logout";
 import Home from "./components/home/Home";
 import Welcome from "./components/home/Welcome";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -140,6 +141,7 @@ class App extends Component {
 							// component={Profile}
 							// user={this.state.user}
 						/>
+						<Route exact path="/logout" component={Logout} />
 					</main>
 				</div>
 			</Router>
