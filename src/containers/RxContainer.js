@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 export default class RxContainer extends Component {
-	// renderConditions = () => {
+	// renderResults = () => {
 	// 	return this.props.rxs.map((rx) => {
 	// 		return (
 	// 			<div>
@@ -17,11 +17,22 @@ export default class RxContainer extends Component {
 	// 		);
 	// 	});
 	// };
+
+	// renderResults = () => {
+	// 	<div>{this.props.result["results"]["0"]["patient"]["drug"]["0"]}</div>;
+	// };
+
+	search = () => {
+		console.log(this.props.result);
+	};
 	render() {
+		console.log(this.props.result.result.results);
+		// map through and render
+
 		return (
 			<div>
 				<div className="header">Search Results</div>
-				<div>{this.props.result}</div>
+				{/* <div>{this.props}</div> */}
 			</div>
 		);
 	}

@@ -7,18 +7,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import FilterSearch from "./components/FilterSearch";
 import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
 import Profile from "./components/Profile";
+import ls from "local-storage";
 
 class App extends Component {
 	state = {
-		id: "",
-		username: "",
 		result: [],
+		user: { username: "" },
 	};
 
 	handleHome = () => <Welcome username={this.state.user.username} />;
 
 	renderForm = (routerProps) => {
-		console.log(routerProps);
+		// console.log(routerProps);
 		if (routerProps.location.pathname === "/login") {
 			return (
 				<Login
@@ -50,6 +50,18 @@ class App extends Component {
 		this.handleAuthFetch(info, "http://localhost:3000/users", history);
 	};
 
+	// handlePersist = (data) => {
+	// 	// console.log(data);
+	// 	// holds {jwt, user: {id, username}}
+	// 	const updatedState = {
+	// 		...this.state,
+	// 		user: { id: data.user.id, username: data.user.username },
+	// 	};
+	// 	localStorage.setItem("token", data.jwt);
+	// 	this.setState({ user: updatedState });
+	// 	console.log(this.state);
+	// };
+
 	handleAuthFetch = (info, request, history) => {
 		fetch(request, {
 			method: "POST",
@@ -65,24 +77,41 @@ class App extends Component {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
-				this.setState(
-					{ username: data.user.username, id: data.user.id },
-					() => {
-						console.log(data);
-						history.push("/profile");
-					}
-				);
+				localStorage.setItem("token", data.token);
+				this.setState({ user: data.user }, () => {
+					history.push("/profile");
+					console.log(this.state);
+				});
 			});
 	};
 
 	handleSearch = (search) => {
-		const url = `https://api.fda.gov/drug/event.json?api_key=erNcZBRL2Jy0yJru61XsO98hXqdGtYKs6QjGJTY8&search=`;
-		const response = fetch(`url${search}`);
+		const URL = `https://api.fda.gov/drug/event.json?api_key=erNcZBRL2Jy0yJru61XsO98hXqdGtYKs6QjGJTY8&search=`;
+		const response = fetch(`URL${search}`);
+		console.log(response);
 		const data = response.json();
 		console.log(data);
 		this.setState({ result: data.results[0] });
+		console.log(this.state.result);
 	};
+
+	componentDidMount() {
+		// holds {jwt, user: {id, username}}
+
+		let token = localStorage.getItem("token");
+		if (token) {
+			fetch("http://localhost:3000/profile", {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			})
+				.then((res) => res.json())
+				.then((user) => {
+					console.log(user);
+					this.setState({ user: user.user });
+				});
+		}
+	}
 
 	render() {
 		return (
@@ -97,14 +126,17 @@ class App extends Component {
 						<Route
 							exact
 							path="/rx"
-							component={FilterSearch}
-							handleSearch={this.handleSearch}
-							result={this.state.result}
+							render={() => (
+								<FilterSearch
+									handleSearch={this.handleSearch}
+									result={this.state.result}
+								/>
+							)}
 						/>
 						<Route
 							exact
 							path="/profile"
-							render={() => <Profile user={this.state.username} />}
+							render={() => <Profile user={this.state.user} />}
 							// component={Profile}
 							// user={this.state.user}
 						/>

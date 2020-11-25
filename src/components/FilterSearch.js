@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import RxContainer from "../containers/RxContainer";
@@ -7,6 +7,7 @@ import Navbar from "./Navbar";
 export default class FilterSearch extends Component {
 	state = {
 		search: "",
+		result: [],
 	};
 
 	handleChange = (e) => {
@@ -16,9 +17,10 @@ export default class FilterSearch extends Component {
 		});
 	};
 
-	handleSearch = (e) => {
+	localHandleSearch = (e) => {
 		e.preventDefault();
-		this.props.handleSearch(this.state);
+		console.log(this.state);
+		// this.props.handleSearch(this.state);
 	};
 
 	componentDidMount() {
@@ -26,7 +28,11 @@ export default class FilterSearch extends Component {
 			`https://api.fda.gov/drug/event.json?api_key=erNcZBRL2Jy0yJru61XsO98hXqdGtYKs6QjGJTY8&search=${this.state.entry}`
 		)
 			.then((res) => res.json())
-			.then((json) => console.log(json));
+			.then((json) =>
+				this.setState({
+					result: json,
+				})
+			);
 		//   .then(
 		// 	(result) => {
 		// 	  this.setState({
@@ -47,7 +53,7 @@ export default class FilterSearch extends Component {
 	}
 
 	render() {
-		console.log(this.props);
+		// console.log(this.state);
 		return (
 			<>
 				<Navbar />
@@ -66,11 +72,16 @@ export default class FilterSearch extends Component {
 								rows={1}
 							/>{" "}
 							<br />
-							<Button variant="outline-secondary">Search</Button>
+							<Button
+								onClick={this.localHandleSearch}
+								variant="outline-secondary"
+							>
+								Search
+							</Button>
 						</Form.Group>
 					</Form>
 					{this.state.search ? (
-						<RxContainer result={this.props.result} />
+						<RxContainer result={this.state} />
 					) : (
 						<div>No Results from Search</div>
 					)}
