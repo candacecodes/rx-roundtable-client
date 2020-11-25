@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-
+import Symptoms from "./Symptoms";
 export default class DxContainer extends Component {
 	state = {
 		search: "",
-		result: [],
+		results: [],
 	};
 
 	// handleChange = (e) => {
@@ -19,7 +19,9 @@ export default class DxContainer extends Component {
 	// 	// this.props.handleSearch(this.state);
 	// };
 
-	renderResults = () => {};
+	renderResults = () => {
+		this.state.results.map((result) => <Symptoms result={result} />);
+	};
 
 	componentDidMount() {
 		fetch(
@@ -28,12 +30,13 @@ export default class DxContainer extends Component {
 			.then((res) => res.json())
 			.then((json) =>
 				this.setState({
-					result: json,
+					results: json,
 				})
 			);
 	}
 
 	render() {
+		console.log(this.state);
 		return <div>{this.renderResults}</div>;
 	}
 }

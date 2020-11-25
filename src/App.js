@@ -102,12 +102,11 @@ class App extends Component {
 
 	handleSearch = (search) => {
 		const URL = `https://api.fda.gov/drug/event.json?api_key=erNcZBRL2Jy0yJru61XsO98hXqdGtYKs6QjGJTY8&search=`;
-		const response = fetch(`URL${search}`);
-		console.log(response);
-		const data = response.json();
-		console.log(data);
-		this.setState({ result: data.results[0] });
-		console.log(this.state.result);
+		const response = fetch(URL + search)
+			.then((response) => response.json())
+			.then((data) => console.log(data));
+		// this.setState({ result: data.results });
+		// console.log(this.state.result);
 	};
 
 	componentDidMount() {

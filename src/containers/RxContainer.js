@@ -26,8 +26,8 @@ export default class RxContainer extends Component {
 		console.log(this.props.result);
 	};
 	render() {
-		console.log(this.props.result.result.results);
-		console.log(this.state);
+		// console.log(this.props.result.result.results);
+		// console.log(this.state);
 		// map through and render
 
 		return (
