@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
 import Profile from "./components/Profile";
 import ls from "local-storage";
 import NavBar from "./components/Navbar";
+import DxContainer from "./components/dx/DxContainer";
 
 class App extends Component {
 	state = {
@@ -159,9 +160,9 @@ class App extends Component {
 										handleEdit={this.handleEdit}
 									/>
 								)}
-								// component={Profile}
-								// user={this.state.user}
 							/>
+							<Route exact path="/symptoms" render={() => <DxContainer />} />
+
 							<Route exact path="/logout" render={() => <Logout />} />
 						</main>
 					</div>
