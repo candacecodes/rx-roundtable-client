@@ -60,7 +60,7 @@ export default class FilterSearch extends Component {
 				<div>
 					<Form>
 						<Form.Group controlId="exampleForm.ControlTextarea1">
-							<Form.Label>Search Medications </Form.Label>
+							<Form.Label>Search </Form.Label>
 							<Form.Control
 								as="textarea"
 								type="text"
@@ -74,7 +74,7 @@ export default class FilterSearch extends Component {
 								onClick={this.localHandleSearch}
 								variant="outline-secondary"
 							>
-								Search
+								Go
 							</Button>
 						</Form.Group>
 					</Form>
