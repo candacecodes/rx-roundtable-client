@@ -14,7 +14,7 @@ import DxContainer from "./components/dx/DxContainer";
 
 class App extends Component {
 	state = {
-		result: [],
+		results: [],
 		user: { username: "" },
 	};
 
@@ -104,8 +104,8 @@ class App extends Component {
 		const URL = `https://api.fda.gov/drug/event.json?api_key=erNcZBRL2Jy0yJru61XsO98hXqdGtYKs6QjGJTY8&search=`;
 		const response = fetch(URL + search)
 			.then((response) => response.json())
-			.then((data) => console.log(data));
-		// this.setState({ result: data.results });
+			.then((data) => console.log(data.results["0"].patient));
+		// this.setState({ result: data.results[] });
 		// console.log(this.state.result);
 	};
 

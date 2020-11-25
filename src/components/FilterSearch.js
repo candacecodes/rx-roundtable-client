@@ -17,7 +17,6 @@ export default class FilterSearch extends Component {
 
 	localHandleSearch = (e) => {
 		e.preventDefault();
-		console.log(this.state);
 		this.props.handleSearch(this.state.search);
 	};
 
