@@ -2,7 +2,6 @@ import React, { useState, Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import RxContainer from "../containers/RxContainer";
-import Navbar from "./Navbar";
 
 export default class FilterSearch extends Component {
 	state = {
@@ -56,7 +55,6 @@ export default class FilterSearch extends Component {
 		// console.log(this.state);
 		return (
 			<>
-				<Navbar />
 				<br />
 				<br />
 				<div>

@@ -1,13 +1,11 @@
 import React from "react";
 import { Jumbotron, Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import Navbar from "../Navbar";
 import { NavLink } from "react-router-dom";
 
 export default function Home() {
 	return (
 		<div>
-			<Navbar />
 			<Jumbotron fluid="true" className="banner">
 				<Container>
 					<h1>Rx Roundtable</h1>

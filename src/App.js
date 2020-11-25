@@ -9,6 +9,7 @@ import FilterSearch from "./components/FilterSearch";
 import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
 import Profile from "./components/Profile";
 import ls from "local-storage";
+import NavBar from "./components/Navbar";
 
 class App extends Component {
 	state = {
@@ -49,6 +50,11 @@ class App extends Component {
 	handleSignup = (info, history) => {
 		console.log("sign up");
 		this.handleAuthFetch(info, "http://localhost:3000/users", history);
+	};
+
+	handleLogout = () => {
+		localStorage.removeItem("token");
+		this.setState({ user: {} });
 	};
 
 	// handlePersist = (data) => {
@@ -116,35 +122,38 @@ class App extends Component {
 
 	render() {
 		return (
-			<Router>
-				<div className="App">
-					<main id="page-wrap">
-						<Route exact path="/" component={this.handleHome} />
-						<Route exact path="/home" component={Home} />
-						<Route exact path="/login" component={this.renderForm} />
-						{/* if user in state redirect to home  */}
-						<Route path="/signup" exact component={this.renderForm} />
-						<Route
-							exact
-							path="/rx"
-							render={() => (
-								<FilterSearch
-									handleSearch={this.handleSearch}
-									result={this.state.result}
-								/>
-							)}
-						/>
-						<Route
-							exact
-							path="/profile"
-							render={() => <Profile user={this.state.user} />}
-							// component={Profile}
-							// user={this.state.user}
-						/>
-						<Route exact path="/logout" component={Logout} />
-					</main>
-				</div>
-			</Router>
+			<>
+				<NavBar />
+				<Router>
+					<div className="App">
+						<main id="page-wrap">
+							<Route exact path="/" component={this.handleHome} />
+							<Route exact path="/home" component={Home} />
+							<Route exact path="/login" component={this.renderForm} />
+							{/* if user in state redirect to home  */}
+							<Route path="/signup" exact component={this.renderForm} />
+							<Route
+								exact
+								path="/rx"
+								render={() => (
+									<FilterSearch
+										handleSearch={this.handleSearch}
+										result={this.state.result}
+									/>
+								)}
+							/>
+							<Route
+								exact
+								path="/profile"
+								render={() => <Profile user={this.state.user} />}
+								// component={Profile}
+								// user={this.state.user}
+							/>
+							<Route exact path="/logout" render={() => <Logout />} />
+						</main>
+					</div>
+				</Router>
+			</>
 		);
 	}
 }
