@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Login from "./components/home/Login";
+import Logout from "./components/home/Logout";
 import Home from "./components/home/Home";
 import Welcome from "./components/home/Welcome";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -8,6 +9,7 @@ import FilterSearch from "./components/FilterSearch";
 import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
 import Profile from "./components/Profile";
 import ls from "local-storage";
+import NavBar from "./components/Navbar";
 
 class App extends Component {
 	state = {
@@ -50,17 +52,29 @@ class App extends Component {
 		this.handleAuthFetch(info, "http://localhost:3000/users", history);
 	};
 
-	// handlePersist = (data) => {
-	// 	// console.log(data);
-	// 	// holds {jwt, user: {id, username}}
-	// 	const updatedState = {
-	// 		...this.state,
-	// 		user: { id: data.user.id, username: data.user.username },
-	// 	};
-	// 	localStorage.setItem("token", data.jwt);
-	// 	this.setState({ user: updatedState });
-	// 	console.log(this.state);
-	// };
+	handleLogout = () => {
+		localStorage.removeItem("token");
+		this.setState({ user: {} });
+	};
+
+	handleDelete = () => {
+		console.log("delete");
+		// fetch(`http://localhost:3000/users/${this.state.user.id}`, {
+		// 	method: "DELETE",
+		// 	headers: {
+		// 		"Content-Type": "application/json",
+		// 	},
+		// });
+		// this.renderLogout();
+	};
+
+	handleEdit = () => {
+		console.log("edit");
+	};
+
+	renderLogout = () => {
+		<Logout />;
+	};
 
 	handleAuthFetch = (info, request, history) => {
 		fetch(request, {
@@ -115,34 +129,44 @@ class App extends Component {
 
 	render() {
 		return (
-			<Router>
-				<div className="App">
-					<main id="page-wrap">
-						<Route exact path="/" component={this.handleHome} />
-						<Route exact path="/home" component={Home} />
-						<Route exact path="/login" component={this.renderForm} />
-						{/* if user in state redirect to home  */}
-						<Route path="/signup" exact component={this.renderForm} />
-						<Route
-							exact
-							path="/rx"
-							render={() => (
-								<FilterSearch
-									handleSearch={this.handleSearch}
-									result={this.state.result}
-								/>
-							)}
-						/>
-						<Route
-							exact
-							path="/profile"
-							render={() => <Profile user={this.state.user} />}
-							// component={Profile}
-							// user={this.state.user}
-						/>
-					</main>
-				</div>
-			</Router>
+			<>
+				<NavBar handleLogout={this.handleLogout} />
+				<Router>
+					<div className="App">
+						<main id="page-wrap">
+							<Route exact path="/" component={this.handleHome} />
+							<Route exact path="/home" component={Home} />
+							<Route exact path="/login" component={this.renderForm} />
+							{/* if user in state redirect to home  */}
+							<Route path="/signup" exact component={this.renderForm} />
+							<Route
+								exact
+								path="/rx"
+								render={() => (
+									<FilterSearch
+										handleSearch={this.handleSearch}
+										result={this.state.result}
+									/>
+								)}
+							/>
+							<Route
+								exact
+								path="/profile"
+								render={() => (
+									<Profile
+										user={this.state.user}
+										handleDelete={this.handleDelete}
+										handleEdit={this.handleEdit}
+									/>
+								)}
+								// component={Profile}
+								// user={this.state.user}
+							/>
+							<Route exact path="/logout" render={() => <Logout />} />
+						</main>
+					</div>
+				</Router>
+			</>
 		);
 	}
 }

@@ -2,7 +2,6 @@ import React, { useState, Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import RxContainer from "../containers/RxContainer";
-import Navbar from "./Navbar";
 
 export default class FilterSearch extends Component {
 	state = {
@@ -56,13 +55,12 @@ export default class FilterSearch extends Component {
 		// console.log(this.state);
 		return (
 			<>
-				<Navbar />
 				<br />
 				<br />
 				<div>
 					<Form>
 						<Form.Group controlId="exampleForm.ControlTextarea1">
-							<Form.Label>Search Medications </Form.Label>
+							<Form.Label>Search </Form.Label>
 							<Form.Control
 								as="textarea"
 								type="text"
@@ -76,7 +74,7 @@ export default class FilterSearch extends Component {
 								onClick={this.localHandleSearch}
 								variant="outline-secondary"
 							>
-								Search
+								Go
 							</Button>
 						</Form.Group>
 					</Form>

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Navbar from "./Navbar";
 import Button from "react-bootstrap/Button";
 
 export default class Profile extends Component {
@@ -11,8 +10,6 @@ export default class Profile extends Component {
 		console.log(this.props.user);
 		return (
 			<>
-				<Navbar />
-
 				<div className="page-content page-container" id="page-content">
 					<div className="padding">
 						<div className="row container d-flex justify-content-center">
@@ -67,11 +64,17 @@ export default class Profile extends Component {
 														</h6>
 													</div>
 												</div>
-												<Button variant="outline-secondary">
+												<Button
+													onClick={this.props.handleEdit}
+													variant="outline-secondary"
+												>
 													{" "}
 													Edit Profile{" "}
 												</Button>{" "}
-												<Button variant="outline-secondary">
+												<Button
+													onClick={this.props.handleDelete}
+													variant="outline-secondary"
+												>
 													{" "}
 													Delete Profile{" "}
 												</Button>
