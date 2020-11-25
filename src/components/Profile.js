@@ -64,7 +64,10 @@ export default class Profile extends Component {
 														</h6>
 													</div>
 												</div>
-												<Button variant="outline-secondary">
+												<Button
+													onClick={this.props.handleEdit}
+													variant="outline-secondary"
+												>
 													{" "}
 													Edit Profile{" "}
 												</Button>{" "}
