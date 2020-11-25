@@ -57,17 +57,24 @@ class App extends Component {
 		this.setState({ user: {} });
 	};
 
-	// handlePersist = (data) => {
-	// 	// console.log(data);
-	// 	// holds {jwt, user: {id, username}}
-	// 	const updatedState = {
-	// 		...this.state,
-	// 		user: { id: data.user.id, username: data.user.username },
-	// 	};
-	// 	localStorage.setItem("token", data.jwt);
-	// 	this.setState({ user: updatedState });
-	// 	console.log(this.state);
-	// };
+	handleDelete = () => {
+		console.log("delete");
+		// fetch(`http://localhost:3000/users/${this.state.user.id}`, {
+		// 	method: "DELETE",
+		// 	headers: {
+		// 		"Content-Type": "application/json",
+		// 	},
+		// });
+		// this.renderLogout();
+	};
+
+	handleEdit = () => {
+		console.log("edit");
+	};
+
+	renderLogout = () => {
+		<Logout />;
+	};
 
 	handleAuthFetch = (info, request, history) => {
 		fetch(request, {
@@ -123,7 +130,7 @@ class App extends Component {
 	render() {
 		return (
 			<>
-				<NavBar handleLogout={this.handleLogout}/>
+				<NavBar handleLogout={this.handleLogout} />
 				<Router>
 					<div className="App">
 						<main id="page-wrap">
@@ -145,7 +152,13 @@ class App extends Component {
 							<Route
 								exact
 								path="/profile"
-								render={() => <Profile user={this.state.user} />}
+								render={() => (
+									<Profile
+										user={this.state.user}
+										handleDelete={this.handleDelete}
+										handleEdit={this.handleEdit}
+									/>
+								)}
 								// component={Profile}
 								// user={this.state.user}
 							/>

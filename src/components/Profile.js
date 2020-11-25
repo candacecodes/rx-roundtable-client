@@ -68,7 +68,10 @@ export default class Profile extends Component {
 													{" "}
 													Edit Profile{" "}
 												</Button>{" "}
-												<Button variant="outline-secondary">
+												<Button
+													onClick={this.props.handleDelete}
+													variant="outline-secondary"
+												>
 													{" "}
 													Delete Profile{" "}
 												</Button>
