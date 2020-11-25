@@ -12,6 +12,7 @@ import ls from "local-storage";
 class App extends Component {
 	state = {
 		result: [],
+		user: { username: "" },
 	};
 
 	handleHome = () => <Welcome username={this.state.user.username} />;
@@ -49,17 +50,17 @@ class App extends Component {
 		this.handleAuthFetch(info, "http://localhost:3000/users", history);
 	};
 
-	handlePersist = (data) => {
-		// console.log(data);
-		// holds {jwt, user: {id, username}}
-		const updatedState = {
-			...this.state,
-			user: { id: data.user.id, username: data.user.username },
-		};
-		localStorage.setItem("token", data.jwt);
-		this.setState({ user: updatedState });
-		console.log(this.state);
-	};
+	// handlePersist = (data) => {
+	// 	// console.log(data);
+	// 	// holds {jwt, user: {id, username}}
+	// 	const updatedState = {
+	// 		...this.state,
+	// 		user: { id: data.user.id, username: data.user.username },
+	// 	};
+	// 	localStorage.setItem("token", data.jwt);
+	// 	this.setState({ user: updatedState });
+	// 	console.log(this.state);
+	// };
 
 	handleAuthFetch = (info, request, history) => {
 		fetch(request, {
@@ -76,14 +77,11 @@ class App extends Component {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				this.handlePersist(data);
-				this.setState(
-					{ username: data.user.username, id: data.user.id },
-					() => {
-						history.push("/profile");
-						// console.log(this.state);
-					}
-				);
+				localStorage.setItem("token", data.token);
+				this.setState({ user: data.user }, () => {
+					history.push("/profile");
+					console.log(this.state);
+				});
 			});
 	};
 
@@ -110,7 +108,7 @@ class App extends Component {
 				.then((res) => res.json())
 				.then((user) => {
 					console.log(user);
-					this.setState({ user: user });
+					this.setState({ user: user.user });
 				});
 		}
 	}
@@ -138,9 +136,7 @@ class App extends Component {
 						<Route
 							exact
 							path="/profile"
-							render={() => (
-								<Profile user={this.state.username} id={this.state.id} />
-							)}
+							render={() => <Profile user={this.state.user} />}
 							// component={Profile}
 							// user={this.state.user}
 						/>

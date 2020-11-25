@@ -8,7 +8,7 @@ export default class Profile extends Component {
 	};
 
 	render() {
-		console.log(this.props);
+		console.log(this.props.user);
 		return (
 			<>
 				<Navbar />
@@ -22,7 +22,6 @@ export default class Profile extends Component {
 										<div className="col-sm-4 bg-c-lite-green user-profile">
 											<div className="card-block text-center text-white">
 												<div className="m-b-25">
-													{this.props.username}
 													{/* <img
 													src="https://img.icons8.com/bubbles/100/000000/user.png"
 													className="img-radius"
@@ -30,14 +29,14 @@ export default class Profile extends Component {
 												> */}{" "}
 												</div>
 												<h6 className="f-w-600">Patient Profile</h6>
-												<p>Patient Name</p>{" "}
+												<p>Patient Name</p> {this.props.user.username}
 												<i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
 											</div>
 										</div>
 										<div className="col-sm-8">
 											<div className="card-block">
 												<h6 className="m-b-20 p-b-5 b-b-default f-w-600">
-													{this.props.user}
+													{/* {this.props.user} */}
 												</h6>
 												<div className="row">
 													{/* <div className="col-sm-6">
