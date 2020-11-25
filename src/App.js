@@ -123,7 +123,7 @@ class App extends Component {
 	render() {
 		return (
 			<>
-				<NavBar />
+				<NavBar handleLogout={this.handleLogout}/>
 				<Router>
 					<div className="App">
 						<main id="page-wrap">
