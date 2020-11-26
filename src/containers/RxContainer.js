@@ -9,7 +9,9 @@ export default class RxContainer extends Component {
 	};
 
 	mapResults = () => {
-		// console.log(this.props.result);
+		console.log(
+			this.props.result.patient.reaction.map((rxn) => console.log(rxn))
+		);
 		// this.props.result.map((info) => console.log(info));
 	};
 	render() {
@@ -21,8 +23,8 @@ export default class RxContainer extends Component {
 		return (
 			<div>
 				<div className="header">Search results for {this.props.search}</div>
-				{console.log(this.props.result.patient.reaction)}
-				{/* {this.mapResults} */}
+				{/* {console.log(this.props.result.patient.reaction)} */}
+				{this.mapResults()}
 			</div>
 		);
 	}
