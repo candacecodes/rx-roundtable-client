@@ -19,6 +19,7 @@ export default class RxSingle extends Component {
 					<Card.Footer className="text-muted">Rx Roundtable</Card.Footer>
 				</Card>
 				{/* adds spacing */}
+				<Button> Add to Profile </Button>
 				&nbsp;&nbsp;
 				<Comment />
 			</div>
