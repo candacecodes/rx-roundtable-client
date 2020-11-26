@@ -105,8 +105,8 @@ class App extends Component {
 		const response = fetch(URL + search)
 			.then((response) => response.json())
 			.then((data) => {
-				this.setState({ result: data });
-				console.log(data);
+				this.setState({ results: data.results["0"] });
+				// console.log(data);
 			});
 		// console.log(data.results["0"].patient));
 	};
