@@ -25,7 +25,13 @@ export default class RxContainer extends Component {
 				<div>
 					<div className="header">Search results for {this.props.search}</div>
 					<div>
-						<>{this.props.result.patient ? <RxSingle /> : "no result"} </>{" "}
+						<>
+							{this.props.result.patient ? (
+								<RxSingle result={this.props.result.patient} />
+							) : (
+								"no result"
+							)}{" "}
+						</>{" "}
 					</div>
 					{/* {this.mapResults()} */}
 				</div>
