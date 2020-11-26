@@ -16,6 +16,7 @@ class App extends Component {
 	state = {
 		results: {},
 		user: { username: "" },
+		search: "",
 	};
 
 	handleHome = () => <Welcome username={this.state.user.username} />;
@@ -101,6 +102,7 @@ class App extends Component {
 	};
 
 	handleSearch = (search) => {
+		this.setState({ search: search });
 		const URL = `https://api.fda.gov/drug/event.json?api_key=erNcZBRL2Jy0yJru61XsO98hXqdGtYKs6QjGJTY8&search=`;
 		const response = fetch(URL + search)
 			.then((response) => response.json())

@@ -22,11 +22,11 @@ export default class RxContainer extends Component {
 	// 	<div>{this.props.result["results"]["0"]["patient"]["drug"]["0"]}</div>;
 	// };
 
-	search = () => {
-		console.log(this.props.result);
-	};
+	// search = () => {
+	// 	console.log(this.props.result);
+	// };
 	render() {
-		// console.log(this.props.result.result.results);
+		console.log(this.props.result);
 		// console.log(this.state);
 		// map through and render
 
