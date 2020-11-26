@@ -33,7 +33,7 @@ export default class RxContainer extends Component {
 
 		return (
 			<div>
-				<div className="header">Search Results</div>
+				<div className="header">Search results for {this.props.search}</div>
 				{/* <div>{this.props}</div> */}
 			</div>
 		);
