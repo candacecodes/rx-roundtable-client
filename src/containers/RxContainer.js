@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import RxSingle from "../components/RxSingle";
 
 export default class RxContainer extends Component {
+	state = {
+		// set new state for side effects, specific into object
+		// results show object with more than just side effects
+		effects: {},
+	};
+
 	mapResults = () => {
 		// console.log(this.props.result);
 		// this.props.result.map((info) => console.log(info));
