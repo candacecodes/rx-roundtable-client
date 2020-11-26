@@ -1,5 +1,5 @@
 ## Rx (Prescription) Roundtable
-A JS-based project to help manage your medications and learn more about common prescriptions and their effects. 
+A JS-based project to learn about prescriptions and their side effects. 
 
 # Getting Started with Create React App
 
