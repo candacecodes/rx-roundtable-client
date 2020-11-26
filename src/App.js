@@ -110,8 +110,15 @@ class App extends Component {
 				this.setState({ results: data.results["0"] });
 				// console.log(data);
 			});
-		// console.log(data.results["0"].patient));
+		// this.mapResults();
 	};
+
+	// mapResults = () => {
+	// 	console.log(
+	// 		this.state.results.patient.reaction.map((rxn) => console.log(rxn))
+	// 	);
+	// 	// this.props.result.map((info) => console.log(info));
+	// };
 
 	componentDidMount() {
 		// holds {jwt, user: {id, username}}
