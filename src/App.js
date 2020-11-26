@@ -147,7 +147,7 @@ class App extends Component {
 								render={() => (
 									<FilterSearch
 										handleSearch={this.handleSearch}
-										result={this.state.result}
+										result={this.state.results}
 									/>
 								)}
 							/>
