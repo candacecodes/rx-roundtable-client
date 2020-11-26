@@ -150,6 +150,7 @@ class App extends Component {
 									<FilterSearch
 										handleSearch={this.handleSearch}
 										result={this.state.results}
+										search={this.state.search}
 									/>
 								)}
 							/>

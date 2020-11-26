@@ -67,7 +67,10 @@ export default class FilterSearch extends Component {
 						</Form.Group>
 					</Form>
 					{this.props.result ? (
-						<RxContainer result={this.props.result} />
+						<RxContainer
+							result={this.props.result}
+							search={this.props.search}
+						/>
 					) : (
 						<div>No Results from Search</div>
 					)}
