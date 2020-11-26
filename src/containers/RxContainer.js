@@ -1,39 +1,28 @@
 import React, { Component } from "react";
+import RxSingle from "../components/RxSingle";
 
 export default class RxContainer extends Component {
-	// renderResults = () => {
-	// 	return this.props.rxs.map((rx) => {
-	// 		return (
-	// 			<div>
-	// 				<span data-toggle="collapse" data-target={rx.id}>
-	// 					<div className="row">
-	// 						<div className="item-header">{rx.name}</div>
-	// 					</div>
-	// 				</span>
-	// 				<div id={rx.id} className="collapse">
-	// 					<RxInfo key={rx.id} rx={rx} saveRx={this.props.saveRx} />
-	// 				</div>
-	// 			</div>
-	// 		);
-	// 	});
-	// };
+	state = {
+		// set new state for side effects, specific into object
+		// results show object with more than just side effects
+		effects: {},
+	};
 
-	// renderResults = () => {
-	// 	<div>{this.props.result["results"]["0"]["patient"]["drug"]["0"]}</div>;
-	// };
-
-	search = () => {
-		console.log(this.props.result);
+	mapResults = () => {
+		// console.log(this.props.result);
+		// this.props.result.map((info) => console.log(info));
 	};
 	render() {
-		console.log(this.props.result.result.results);
-		console.log(this.state);
+		// console.log(this.props.result);
+		// console.log(this.props.search);
+		// console.log(this.state);
 		// map through and render
 
 		return (
 			<div>
-				<div className="header">Search Results</div>
-				{/* <div>{this.props}</div> */}
+				<div className="header">Search results for {this.props.search}</div>
+				{console.log(this.props.result.patient.reaction)}
+				{/* {this.mapResults} */}
 			</div>
 		);
 	}

@@ -10,11 +10,13 @@ import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
 import Profile from "./components/Profile";
 import ls from "local-storage";
 import NavBar from "./components/Navbar";
+import DxContainer from "./components/dx/DxContainer";
 
 class App extends Component {
 	state = {
-		result: [],
+		results: {},
 		user: { username: "" },
+		search: "",
 	};
 
 	handleHome = () => <Welcome username={this.state.user.username} />;
@@ -100,13 +102,15 @@ class App extends Component {
 	};
 
 	handleSearch = (search) => {
+		this.setState({ search: search });
 		const URL = `https://api.fda.gov/drug/event.json?api_key=erNcZBRL2Jy0yJru61XsO98hXqdGtYKs6QjGJTY8&search=`;
-		const response = fetch(`URL${search}`);
-		console.log(response);
-		const data = response.json();
-		console.log(data);
-		this.setState({ result: data.results[0] });
-		console.log(this.state.result);
+		const response = fetch(URL + search)
+			.then((response) => response.json())
+			.then((data) => {
+				this.setState({ results: data.results["0"] });
+				// console.log(data);
+			});
+		// console.log(data.results["0"].patient));
 	};
 
 	componentDidMount() {
@@ -121,7 +125,7 @@ class App extends Component {
 			})
 				.then((res) => res.json())
 				.then((user) => {
-					console.log(user);
+					// console.log(user);
 					this.setState({ user: user.user });
 				});
 		}
@@ -145,7 +149,8 @@ class App extends Component {
 								render={() => (
 									<FilterSearch
 										handleSearch={this.handleSearch}
-										result={this.state.result}
+										result={this.state.results}
+										search={this.state.search}
 									/>
 								)}
 							/>
@@ -159,9 +164,9 @@ class App extends Component {
 										handleEdit={this.handleEdit}
 									/>
 								)}
-								// component={Profile}
-								// user={this.state.user}
 							/>
+							<Route exact path="/symptoms" render={() => <DxContainer />} />
+
 							<Route exact path="/logout" render={() => <Logout />} />
 						</main>
 					</div>
