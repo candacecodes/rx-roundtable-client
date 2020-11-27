@@ -8,7 +8,8 @@ export default class Profile extends Component {
 
 	showSavedRx = () => {
 		console.log("saved prescriptions");
-		console.log(this.props.rxes);
+		// get rxes from local storage
+		// set state of rxes from result
 	};
 
 	render() {
