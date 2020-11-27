@@ -23,11 +23,15 @@ export default class RxContainer extends Component {
 		return (
 			<>
 				<div>
-					<div className="header">Search results for {this.props.search}</div>
+					<div className="header">Search Results</div>
+					<br />{" "}
 					<div>
 						<>
 							{this.props.result.patient ? (
-								<RxSingle result={this.props.result.patient} />
+								<RxSingle
+									result={this.props.result.patient}
+									search={this.props.search}
+								/>
 							) : (
 								"no result"
 							)}{" "}

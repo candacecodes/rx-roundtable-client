@@ -12,7 +12,7 @@ export default class RxSingle extends Component {
 			<>
 				<div>
 					<Card className="text-center">
-						<Card.Header>Rx Name</Card.Header>
+						<Card.Header>{this.props.search}</Card.Header>
 						<Card.Body>
 							<Card.Title>Side Effect</Card.Title>
 							<Card.Text>
