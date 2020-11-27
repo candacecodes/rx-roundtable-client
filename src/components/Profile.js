@@ -83,6 +83,7 @@ export default class Profile extends Component {
 									</div>
 								</div>
 							</div>
+							<Button>See Saved Prescriptions</Button>
 						</div>
 					</div>
 				</div>

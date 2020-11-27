@@ -128,9 +128,9 @@ class App extends Component {
 		// 	body: JSON.stringify(data),
 		// }).then((response) => response.json());
 
-		// if (!this.state.rxes.includes(rx)) {
-		// 	this.setState({ rxes: [...this.state.rxes, rx] });
-		// }
+		if (!this.state.rxes.includes(rx)) {
+			this.setState({ rxes: [...this.state.rxes, rx] });
+		}
 	};
 
 	componentDidMount() {
