@@ -115,14 +115,16 @@ class App extends Component {
 	};
 
 	saveRx = (rx) => {
-		console.log(rx);
+		let data = {
+			name: rx,
+		};
 
 		fetch("http://localhost:3000/rxes", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify(rx),
+			body: JSON.stringify(data),
 		}).then((response) => response.json());
 
 		if (!this.state.rxes.includes(rx)) {
