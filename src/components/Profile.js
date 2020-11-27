@@ -8,10 +8,12 @@ export default class Profile extends Component {
 
 	showSavedRx = () => {
 		console.log("saved prescriptions");
+		console.log(this.props.rxes);
 	};
 
 	render() {
 		console.log(this.props.user);
+
 		return (
 			<>
 				<div className="page-content page-container" id="page-content">

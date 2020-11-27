@@ -120,6 +120,8 @@ class App extends Component {
 		};
 		console.log(data);
 
+		localStorage.setItem("rxes", rx);
+
 		// fetch("http://localhost:3000/rxes", {
 		// 	method: "POST",
 		// 	headers: {
@@ -183,6 +185,7 @@ class App extends Component {
 										user={this.state.user}
 										handleDelete={this.handleDelete}
 										handleEdit={this.handleEdit}
+										rxes={this.state.rxes}
 									/>
 								)}
 							/>
