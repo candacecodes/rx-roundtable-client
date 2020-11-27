@@ -6,6 +6,10 @@ export default class Profile extends Component {
 		editable: false,
 	};
 
+	showSavedRx = () => {
+		console.log("saved prescriptions");
+	};
+
 	render() {
 		console.log(this.props.user);
 		return (
@@ -83,7 +87,9 @@ export default class Profile extends Component {
 									</div>
 								</div>
 							</div>
-							<Button>See Saved Prescriptions</Button>
+							<Button onClick={this.showSavedRx}>
+								See Saved Prescriptions
+							</Button>
 						</div>
 					</div>
 				</div>
