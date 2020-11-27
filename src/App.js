@@ -17,6 +17,7 @@ class App extends Component {
 		results: {},
 		user: { username: "" },
 		search: "",
+		rxes: [],
 	};
 
 	handleHome = () => <Welcome username={this.state.user.username} />;
@@ -113,8 +114,20 @@ class App extends Component {
 		// this.mapResults();
 	};
 
-	saveRx = (search) => {
-		console.log(search);
+	saveRx = (rx) => {
+		console.log(rx);
+
+		fetch("http://localhost:3000/rxes", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(rx),
+		}).then((response) => response.json());
+
+		if (!this.state.rxes.includes(rx)) {
+			this.setState({ rxes: [...this.state.rxes, rx] });
+		}
 	};
 
 	componentDidMount() {
