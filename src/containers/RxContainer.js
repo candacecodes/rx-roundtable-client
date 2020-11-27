@@ -31,6 +31,7 @@ export default class RxContainer extends Component {
 								<RxSingle
 									result={this.props.result.patient}
 									search={this.props.search}
+									saveRx={this.props.saveRx}
 								/>
 							) : (
 								"no result"

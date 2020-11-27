@@ -113,12 +113,9 @@ class App extends Component {
 		// this.mapResults();
 	};
 
-	// mapResults = () => {
-	// 	console.log(
-	// 		this.state.results.patient.reaction.map((rxn) => console.log(rxn))
-	// 	);
-	// 	// this.props.result.map((info) => console.log(info));
-	// };
+	saveRx = (search) => {
+		console.log(search);
+	};
 
 	componentDidMount() {
 		// holds {jwt, user: {id, username}}
@@ -158,6 +155,7 @@ class App extends Component {
 										handleSearch={this.handleSearch}
 										result={this.state.results}
 										search={this.state.search}
+										saveRx={this.saveRx}
 									/>
 								)}
 							/>

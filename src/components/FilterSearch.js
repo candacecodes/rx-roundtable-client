@@ -70,6 +70,7 @@ export default class FilterSearch extends Component {
 						<RxContainer
 							result={this.props.result}
 							search={this.props.search}
+							saveRx={this.props.saveRx}
 						/>
 					) : (
 						<div>No Results from Search</div>

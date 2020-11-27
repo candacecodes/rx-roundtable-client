@@ -4,7 +4,9 @@ import Button from "react-bootstrap/Button";
 import Comment from "./AddCommentForm";
 export default class RxSingle extends Component {
 	handleSaveUserRx = () => {
-		console.log(this.props.result.reaction["0"].reactionmeddrapt);
+		// console.log(this.props.result.reaction["0"].reactionmeddrapt);
+		// console.log(this.props.search);
+		this.props.saveRx(this.props.search);
 	};
 	render() {
 		// console.log(this.props.result);
