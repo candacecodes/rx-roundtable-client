@@ -14,7 +14,7 @@ export default class RxSingle extends Component {
 					<Card className="text-center">
 						<Card.Header>Rx Name</Card.Header>
 						<Card.Body>
-							<Card.Title>Generic Name</Card.Title>
+							<Card.Title>Side Effect</Card.Title>
 							<Card.Text>
 								{this.props.result.reaction["0"].reactionmeddrapt}
 							</Card.Text>
