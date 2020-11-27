@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
+import RxSingle from "./RxSingle";
 
 export default class Profile extends Component {
 	state = {
-		rxes: {},
+		rxes: [],
 	};
 
 	showSavedRx = () => {
@@ -17,6 +18,11 @@ export default class Profile extends Component {
 
 		// console.log to check
 		console.log(this.state.rxes);
+
+		// render onto screen
+		{
+			this.state.rxes ? console.log("rx") : console.log("no rx");
+		}
 	};
 
 	render() {
