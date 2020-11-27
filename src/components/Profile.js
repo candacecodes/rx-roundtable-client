@@ -17,11 +17,11 @@ export default class Profile extends Component {
 		this.setState({ rxes: getRxes });
 
 		// console.log to check
-		console.log(this.state.rxes);
+		// console.log(this.state.rxes);
 
 		// render onto screen
 		{
-			this.state.rxes ? console.log("rx") : console.log("no rx");
+			this.state.rxes ? console.log(this.state.rxes) : console.log("no rx");
 		}
 	};
 
