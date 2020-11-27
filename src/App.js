@@ -116,20 +116,21 @@ class App extends Component {
 
 	saveRx = (rx) => {
 		let data = {
-			name: rx,
+			name: `${rx}`,
 		};
+		console.log(data);
 
-		fetch("http://localhost:3000/rxes", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(data),
-		}).then((response) => response.json());
+		// fetch("http://localhost:3000/rxes", {
+		// 	method: "POST",
+		// 	headers: {
+		// 		"Content-Type": "application/json",
+		// 	},
+		// 	body: JSON.stringify(data),
+		// }).then((response) => response.json());
 
-		if (!this.state.rxes.includes(rx)) {
-			this.setState({ rxes: [...this.state.rxes, rx] });
-		}
+		// if (!this.state.rxes.includes(rx)) {
+		// 	this.setState({ rxes: [...this.state.rxes, rx] });
+		// }
 	};
 
 	componentDidMount() {
