@@ -3,17 +3,20 @@ import Button from "react-bootstrap/Button";
 
 export default class Profile extends Component {
 	state = {
-		rxes: [],
+		rxes: {},
 	};
 
 	showSavedRx = () => {
 		console.log("saved prescriptions");
+
 		// get rxes from local storage
-		console.log(localStorage.rxes);
+		const getRxes = localStorage.getItem("rxes");
+
 		// set state of rxes from result
-		this.setState({ rxes: localStorage.rxes });
+		this.setState({ rxes: getRxes });
+
 		// console.log to check
-		console.log(this.state);
+		console.log(this.state.rxes);
 	};
 
 	render() {
