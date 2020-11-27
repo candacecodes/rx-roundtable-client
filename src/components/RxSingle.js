@@ -7,7 +7,7 @@ export default class RxSingle extends Component {
 	// 	console.log(this.props);
 	// };
 	render() {
-		console.log(this.props.result.reaction);
+		console.log(this.props.result);
 		return (
 			<>
 				<div>
