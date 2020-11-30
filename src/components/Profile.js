@@ -22,6 +22,7 @@ export default class Profile extends Component {
 
 		// render onto screen
 		// return <SavedPrescriptionsContainer rxes={this.state.rxes} />;
+		console.log(this.props);
 	};
 
 	render() {

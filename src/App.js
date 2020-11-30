@@ -115,12 +115,11 @@ class App extends Component {
 	};
 
 	saveRx = (rx) => {
-		let data = {
-			name: `${rx}`,
-		};
-		console.log(data);
-
-		localStorage.setItem("rxes", rx);
+		// push rx into localStorage rx
+		var existing = localStorage.getItem("rxes");
+		existing = existing ? existing.split(",") : [];
+		existing.push(`${rx}`);
+		localStorage.setItem("rxes", existing.toString());
 
 		// fetch("http://localhost:3000/rxes", {
 		// 	method: "POST",
@@ -133,6 +132,7 @@ class App extends Component {
 		if (!this.state.rxes.includes(rx)) {
 			this.setState({ rxes: [...this.state.rxes, rx] });
 		}
+		console.log(this.state);
 	};
 
 	componentDidMount() {

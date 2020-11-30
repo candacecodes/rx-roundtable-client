@@ -1,8 +1,26 @@
 import React, { Component } from "react";
 
 export default class SavedPrescriptionsContainer extends Component {
+	state = {
+		rxes: [],
+	};
+	mapRx = () => {
+		console.log(this.props.rxes);
+		// return console.log(this.props.rxes);
+		// map through array
+		// return this.props.rxes.map((rx) => {
+		// 	console.log("test");
+		// });
+	};
+
 	render() {
-		console.log("Saved Prescriptions Container", this.props.rxes);
-		return <div>Saved Prescriptions</div>;
+		return (
+			<>
+				<div>
+					Saved Prescriptions
+					<br /> {this.mapRx()}
+				</div>
+			</>
+		);
 	}
 }
