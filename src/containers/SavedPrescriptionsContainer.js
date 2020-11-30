@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SavedPrescriptionSingle from "../components/SavedPrescriptionSingle";
+import Button from "react-bootstrap/Button";
 
 export default class SavedPrescriptionsContainer extends Component {
 	state = {
@@ -17,7 +18,9 @@ export default class SavedPrescriptionsContainer extends Component {
 		return (
 			<>
 				<div>
-					Saved Prescriptions
+					<br />
+					<Button onClick={this.showSavedRx}>Prescription List</Button>
+					<br />
 					<br />{" "}
 					{this.props.rxes.map((rx) => (
 						<SavedPrescriptionSingle rx={rx} />
