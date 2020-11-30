@@ -20,6 +20,11 @@ export default class Profile extends Component {
 		{
 			this.state.rxes ? console.log(this.state.rxes) : console.log("no rx");
 		}
+
+		// ternary console log results
+		// {
+		// 	this.state.rxes ? console.log(this.state.rxes) : console.log("no rx");
+		// }
 	};
 
 	render() {
