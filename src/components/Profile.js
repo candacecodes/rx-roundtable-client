@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import RxSingle from "./RxSingle";
-import SavedPrescriptions from "../containers/SavedPrescriptions";
+import SavedPrescriptionsContainer from "../containers/SavedPrescriptionsContainer";
 
 export default class Profile extends Component {
 	state = {
@@ -21,13 +21,7 @@ export default class Profile extends Component {
 		console.log("saved prescriptions", this.state.rxes);
 
 		// render onto screen
-		{
-			if (this.state.rxes) {
-				return <SavedPrescriptions />;
-			} else {
-				console.log("no rx");
-			}
-		}
+		return <SavedPrescriptionsContainer />;
 
 		// ternary console log results
 		// {
@@ -114,9 +108,16 @@ export default class Profile extends Component {
 									</div>
 								</div>
 							</div>
-							<Button onClick={this.showSavedRx}>
+							{/* <Button onClick={this.showSavedRx}>
 								See Saved Prescriptions
-							</Button>
+							</Button> */}
+							{this.state.rxes ? (
+								<Button onClick={this.showSavedRx}>
+									See Saved Prescriptions
+								</Button>
+							) : (
+								<Button>No Saved Prescriptions</Button>
+							)}
 						</div>
 					</div>
 				</div>
