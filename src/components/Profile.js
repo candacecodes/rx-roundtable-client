@@ -105,7 +105,7 @@ export default class Profile extends Component {
 									</div>
 								</div>
 							</div>
-							<Button onClick={this.showSavedRx}>
+							<Button variant="outline-success" onClick={this.showSavedRx}>
 								See Saved Prescriptions
 							</Button>
 
