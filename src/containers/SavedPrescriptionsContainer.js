@@ -13,7 +13,7 @@ export default class SavedPrescriptionsContainer extends Component {
 		// is this because it's not in an array? (not sure)
 		// do i need to make this into an array?
 		// this.props.rxes.map((rx) => console.log(rx));
-		console.log("mapRx");
+		this.props.rxes.map((rx) => console.log(rx));
 	};
 
 	render() {
