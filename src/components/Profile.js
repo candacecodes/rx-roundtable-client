@@ -47,8 +47,8 @@ export default class Profile extends Component {
 													alt="User-Profile-Image"
 												> */}{" "}
 												</div>
-												<h6 className="f-w-600">Patient Profile</h6>
-												<p>Patient Name</p> {this.props.user.username}
+												<h6 className="f-w-600">User Profile</h6>
+												<p>User Name</p> {this.props.user.username}
 												<i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
 											</div>
 										</div>
@@ -108,7 +108,7 @@ export default class Profile extends Component {
 							<Button onClick={this.showSavedRx}>
 								See Saved Prescriptions
 							</Button>
-							<br />
+
 							{
 								this.state.rxes.length > 0 ? (
 									<SavedPrescriptionsContainer rxes={this.state.rxes} />
