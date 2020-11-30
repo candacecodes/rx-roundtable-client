@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 export default class SavedPrescriptions extends Component {
 	render() {
-		return <div></div>;
+		console.log("Saved Prescriptions Container");
+		return <div>Saved Prescriptions</div>;
 	}
 }

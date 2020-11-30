@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import RxSingle from "./RxSingle";
+import SavedPrescriptions from "../containers/SavedPrescriptions";
 
 export default class Profile extends Component {
 	state = {
@@ -8,7 +9,7 @@ export default class Profile extends Component {
 	};
 
 	showSavedRx = () => {
-		console.log("saved prescriptions");
+		// console.log("saved prescriptions");
 
 		// get rxes from local storage
 		const getRxes = localStorage.getItem("rxes");
@@ -16,9 +17,16 @@ export default class Profile extends Component {
 		// set state of rxes from result
 		this.setState({ rxes: getRxes });
 
+		//console log to check
+		console.log("saved prescriptions", this.state.rxes);
+
 		// render onto screen
 		{
-			this.state.rxes ? console.log(this.state.rxes) : console.log("no rx");
+			if (this.state.rxes) {
+				return <SavedPrescriptions />;
+			} else {
+				console.log("no rx");
+			}
 		}
 
 		// ternary console log results
