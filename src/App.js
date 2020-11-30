@@ -133,6 +133,7 @@ class App extends Component {
 			this.setState({ rxes: [...this.state.rxes, rx] });
 		}
 		console.log(this.state);
+		window.alert("saved to profile");
 	};
 
 	componentDidMount() {
