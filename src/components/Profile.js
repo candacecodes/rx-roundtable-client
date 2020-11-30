@@ -108,17 +108,16 @@ export default class Profile extends Component {
 							<Button variant="outline-success" onClick={this.showSavedRx}>
 								See Saved Prescriptions
 							</Button>
-
-							{
-								this.state.rxes.length > 0 ? (
-									<SavedPrescriptionsContainer rxes={this.state.rxes} />
-								) : null
-								// <Button onClick={this.showSavedRx}>
-								// 	See Saved Prescriptions
-								// </Button>
-								// <Button>No Saved Prescriptions</Button>
-							}
 						</div>
+						{
+							this.state.rxes.length > 0 ? (
+								<SavedPrescriptionsContainer rxes={this.state.rxes} />
+							) : null
+							// <Button onClick={this.showSavedRx}>
+							// 	See Saved Prescriptions
+							// </Button>
+							// <Button>No Saved Prescriptions</Button>
+						}
 					</div>
 				</div>
 			</>

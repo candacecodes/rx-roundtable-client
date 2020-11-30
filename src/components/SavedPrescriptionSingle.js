@@ -6,9 +6,7 @@ export default class SavedPrescriptionSingle extends Component {
 		return (
 			<div>
 				<h5>{this.props.rx}</h5>
-				<Button type="button" class="btn btn-secondary btn-sm">
-					Delete
-				</Button>
+				<Button variant="outline-dark">Delete</Button>
 				<br />
 			</div>
 		);

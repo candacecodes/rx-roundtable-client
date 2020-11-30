@@ -19,7 +19,9 @@ export default class SavedPrescriptionsContainer extends Component {
 			<>
 				<div>
 					<br />
-					<Button onClick={this.showSavedRx}>Prescription List</Button>
+					<Button variant="outline-success" onClick={this.showSavedRx}>
+						Prescription List
+					</Button>
 					<br />
 					<br />{" "}
 					{this.props.rxes.map((rx) => (
