@@ -21,12 +21,7 @@ export default class Profile extends Component {
 		console.log("saved prescriptions", this.state.rxes);
 
 		// render onto screen
-		return <SavedPrescriptionsContainer />;
-
-		// ternary console log results
-		// {
-		// 	this.state.rxes ? console.log(this.state.rxes) : console.log("no rx");
-		// }
+		// return <SavedPrescriptionsContainer rxes={this.state.rxes} />;
 	};
 
 	render() {
@@ -108,16 +103,19 @@ export default class Profile extends Component {
 									</div>
 								</div>
 							</div>
-							{/* <Button onClick={this.showSavedRx}>
+							<Button onClick={this.showSavedRx}>
 								See Saved Prescriptions
-							</Button> */}
-							{this.state.rxes ? (
-								<Button onClick={this.showSavedRx}>
-									See Saved Prescriptions
-								</Button>
-							) : (
-								<Button>No Saved Prescriptions</Button>
-							)}
+							</Button>
+							<br />
+							{
+								this.state.rxes.length > 0 ? (
+									<SavedPrescriptionsContainer rxes={this.state.rxes} />
+								) : null
+								// <Button onClick={this.showSavedRx}>
+								// 	See Saved Prescriptions
+								// </Button>
+								// <Button>No Saved Prescriptions</Button>
+							}
 						</div>
 					</div>
 				</div>
