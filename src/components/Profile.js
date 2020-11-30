@@ -13,9 +13,10 @@ export default class Profile extends Component {
 
 		// get rxes from local storage
 		const getRxes = localStorage.getItem("rxes");
+		// console.log(getRxes);
 
 		// set state of rxes from result
-		this.setState({ rxes: getRxes });
+		this.setState({ rxes: getRxes.split(",") });
 
 		//console log to check
 		console.log("saved prescriptions", this.state.rxes);
