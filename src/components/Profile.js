@@ -16,9 +16,6 @@ export default class Profile extends Component {
 		// set state of rxes from result
 		this.setState({ rxes: getRxes });
 
-		// console.log to check
-		// console.log(this.state.rxes);
-
 		// render onto screen
 		{
 			this.state.rxes ? console.log(this.state.rxes) : console.log("no rx");
