@@ -154,9 +154,9 @@ class App extends Component {
 	// 	// localStorage.setItem("rxes", existing.toString());
 	// };
 
-	commentSavedRx = () => {
-		console.log("comment function for savedRx");
-	};
+	// commentSavedRx = () => {
+	// 	console.log("comment function for savedRx");
+	// };
 
 	componentDidMount() {
 		// holds {jwt, user: {id, username}}
@@ -210,7 +210,7 @@ class App extends Component {
 										handleEdit={this.handleEdit}
 										rxes={this.state.rxes}
 										// deleteSavedRx={this.deleteSavedRx}
-										commentSavedRx={this.commentSavedRx}
+										// commentSavedRx={this.commentSavedRx}
 									/>
 								)}
 							/>

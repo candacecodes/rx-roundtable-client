@@ -19,6 +19,10 @@ export default class Profile extends Component {
 		this.setState({ rxes: getRxes.split(",") });
 	};
 
+	commentSavedRx = () => {
+		console.log("comment function for savedRx");
+	};
+
 	deleteSavedRx = (rx) => {
 		console.log("delete function savedRx", rx);
 		// console.log(this.state);
@@ -125,7 +129,7 @@ export default class Profile extends Component {
 								<SavedPrescriptionsContainer
 									rxes={this.state.rxes}
 									deleteSavedRx={this.deleteSavedRx}
-									commentSavedRx={this.props.commentSavedRx}
+									commentSavedRx={this.commentSavedRx}
 								/>
 							) : null
 							// <Button onClick={this.showSavedRx}>
