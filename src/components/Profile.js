@@ -21,6 +21,7 @@ export default class Profile extends Component {
 
 	commentSavedRx = () => {
 		console.log("comment function for savedRx");
+		return <div>Comment</div>;
 	};
 
 	deleteSavedRx = (rx) => {
@@ -85,20 +86,16 @@ export default class Profile extends Component {
 													</div> */}
 												</div>
 												<h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">
-													Rx
+													User Information
 												</h6>
 												<div className="row">
 													<div className="col-sm-6">
-														<p className="m-b-10 f-w-600">Rx 1 </p>
-														<h6 className="text-muted f-w-400">
-															Rx Information
-														</h6>
+														<p className="m-b-10 f-w-600">Age </p>
+														<h6 className="text-muted f-w-400">Age</h6>
 													</div>
 													<div className="col-sm-6">
-														<p className="m-b-10 f-w-600">Rx 2</p>
-														<h6 className="text-muted f-w-400">
-															Rx Information
-														</h6>
+														<p className="m-b-10 f-w-600">Notes</p>
+														<h6 className="text-muted f-w-400">Notes</h6>
 													</div>
 												</div>
 												<Button
