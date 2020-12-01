@@ -91,11 +91,11 @@ export default class Profile extends Component {
 												<div className="row">
 													<div className="col-sm-6">
 														<p className="m-b-10 f-w-600">Age </p>
-														<h6 className="text-muted f-w-400">Age</h6>
+														<h6 className="text-muted f-w-400">User Age 1</h6>
 													</div>
 													<div className="col-sm-6">
 														<p className="m-b-10 f-w-600">Notes</p>
-														<h6 className="text-muted f-w-400">Notes</h6>
+														<h6 className="text-muted f-w-400">User Note 1</h6>
 													</div>
 												</div>
 												<Button
