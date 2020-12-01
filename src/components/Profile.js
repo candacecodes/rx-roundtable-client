@@ -6,6 +6,8 @@ import SavedPrescriptionsContainer from "../containers/SavedPrescriptionsContain
 export default class Profile extends Component {
 	state = {
 		rxes: [],
+		age: "",
+		note: "",
 	};
 
 	handleEdit = () => {

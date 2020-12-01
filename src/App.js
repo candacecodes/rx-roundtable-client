@@ -60,6 +60,29 @@ class App extends Component {
 		this.setState({ user: {} });
 	};
 
+	// handleProfileEdit= (description, id) => {
+	// also update state in profile for
+	// 	console.log(description);
+	// 	console.log("id " + id);
+
+	// 	let data = {
+	// 	  age: age, note: note
+	// 	};
+
+	// 	fetch(`http://localhost:3000/users/${id}`, {
+	// 	  method: "PATCH",
+	// 	  headers: {
+	// 		"Content-Type": "application/json",
+	// 		Accept: "application/json",
+	// 	  },
+	// 	  body: JSON.stringify(data),
+	// 	})
+	// 	  .then((res) => res.json())
+	// 	  .then((json) => console.log(json)
+	// 		});
+	// 	  });
+	//   };
+
 	handleDelete = () => {
 		console.log("delete");
 		// fetch(`http://localhost:3000/users/${this.state.user.id}`, {
