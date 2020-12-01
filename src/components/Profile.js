@@ -2,8 +2,24 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import RxSingle from "./RxSingle";
 import SavedPrescriptionsContainer from "../containers/SavedPrescriptionsContainer";
+import EditableLabel from "react-inline-editing";
 
 export default class Profile extends Component {
+	constructor(props) {
+		super(props);
+
+		this._handleFocus = this._handleFocus.bind(this);
+		this._handleFocusOut = this._handleFocusOut.bind(this);
+	}
+
+	_handleFocus(text) {
+		console.log("Focused with text: " + text);
+	}
+
+	_handleFocusOut(text) {
+		console.log("Left editor with text: " + text);
+	}
+
 	state = {
 		rxes: [],
 		age: "",
@@ -97,11 +113,33 @@ export default class Profile extends Component {
 												<div className="row">
 													<div className="col-sm-6">
 														<p className="m-b-10 f-w-600">Age </p>
-														<h6 className="text-muted f-w-400">User Age 1</h6>
+														<EditableLabel
+															text="Click to Update Age"
+															labelClassName="myLabelClass"
+															inputClassName="myInputClass"
+															inputWidth="200px"
+															inputHeight="25px"
+															inputMaxLength="50"
+															// labelFontWeight="bold"
+															// inputFontWeight="bold"
+															onFocus={this._handleFocus}
+															onFocusOut={this._handleFocusOut}
+														/>
 													</div>
 													<div className="col-sm-6">
 														<p className="m-b-10 f-w-600">Notes</p>
-														<h6 className="text-muted f-w-400">User Note 1</h6>
+														<EditableLabel
+															text="Click to Update Note"
+															labelClassName="myLabelClass"
+															inputClassName="myInputClass"
+															inputWidth="200px"
+															inputHeight="25px"
+															inputMaxLength="50"
+															// labelFontWeight="bold"
+															// inputFontWeight="bold"
+															onFocus={this._handleFocus}
+															onFocusOut={this._handleFocusOut}
+														/>{" "}
 													</div>
 												</div>
 												<Button
