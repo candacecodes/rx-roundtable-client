@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import SavedPrescriptionSingle from "../components/SavedPrescriptionSingle";
-import Button from "react-bootstrap/Button";
+import Badge from "react-bootstrap/Badge";
 
 export default class SavedPrescriptionsContainer extends Component {
-	state = {
-		rxes: [],
-	};
 	// mapRx = () => {
 	// 	// map through each element in the array
 	// 	// display an individual div for each prescription
@@ -19,11 +16,11 @@ export default class SavedPrescriptionsContainer extends Component {
 			<>
 				<div>
 					<br />
-					<Button variant="outline-success" onClick={this.showSavedRx}>
-						Prescription List
-					</Button>
-					<br />
-					<br />{" "}
+					<h4>
+						<Badge pill variant="info">
+							Prescription List
+						</Badge>
+					</h4>
 					{this.props.rxes.map((rx) => (
 						<SavedPrescriptionSingle rx={rx} />
 					))}

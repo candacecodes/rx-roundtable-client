@@ -17,13 +17,6 @@ export default class Profile extends Component {
 
 		// set state of rxes from result
 		this.setState({ rxes: getRxes.split(",") });
-
-		//console log to check
-		// console.log("saved prescriptions", this.state.rxes);
-
-		// render onto screen
-		// return <SavedPrescriptionsContainer rxes={this.state.rxes} />;
-		// console.log(this.props);
 	};
 
 	render() {
