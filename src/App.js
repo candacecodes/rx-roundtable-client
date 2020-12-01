@@ -71,10 +71,6 @@ class App extends Component {
 		// this.renderLogout();
 	};
 
-	handleEdit = () => {
-		console.log("edit");
-	};
-
 	renderLogout = () => {
 		<Logout />;
 	};
@@ -207,7 +203,7 @@ class App extends Component {
 									<Profile
 										user={this.state.user}
 										handleDelete={this.handleDelete}
-										handleEdit={this.handleEdit}
+										// handleEdit={this.handleEdit}
 										rxes={this.state.rxes}
 										// deleteSavedRx={this.deleteSavedRx}
 										// commentSavedRx={this.commentSavedRx}

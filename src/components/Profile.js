@@ -8,6 +8,10 @@ export default class Profile extends Component {
 		rxes: [],
 	};
 
+	handleEdit = () => {
+		console.log("edit");
+	};
+
 	showSavedRx = () => {
 		// console.log("saved prescriptions");
 
@@ -99,7 +103,7 @@ export default class Profile extends Component {
 													</div>
 												</div>
 												<Button
-													onClick={this.props.handleEdit}
+													onClick={this.handleEdit}
 													variant="outline-secondary"
 												>
 													{" "}
