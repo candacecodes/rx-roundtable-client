@@ -136,6 +136,14 @@ class App extends Component {
 		window.alert("saved to profile");
 	};
 
+	deleteSavedRx = () => {
+		console.log("delete function savedRx");
+	};
+
+	commentSavedRx = () => {
+		console.log("comment function for savedRx");
+	};
+
 	componentDidMount() {
 		// holds {jwt, user: {id, username}}
 
@@ -187,6 +195,8 @@ class App extends Component {
 										handleDelete={this.handleDelete}
 										handleEdit={this.handleEdit}
 										rxes={this.state.rxes}
+										deleteSavedRx={this.deleteSavedRx}
+										commentSavedRx={this.commentSavedRx}
 									/>
 								)}
 							/>

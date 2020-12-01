@@ -22,7 +22,11 @@ export default class SavedPrescriptionsContainer extends Component {
 						</Badge>
 					</h4>
 					{this.props.rxes.map((rx) => (
-						<SavedPrescriptionSingle rx={rx} />
+						<SavedPrescriptionSingle
+							rx={rx}
+							deleteSavedRx={this.props.deleteSavedRx}
+							commentSavedRx={this.props.commentSavedRx}
+						/>
 					))}
 				</div>
 			</>

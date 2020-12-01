@@ -104,7 +104,11 @@ export default class Profile extends Component {
 						</Button>
 						{
 							this.state.rxes.length > 0 ? (
-								<SavedPrescriptionsContainer rxes={this.state.rxes} />
+								<SavedPrescriptionsContainer
+									rxes={this.state.rxes}
+									deleteSavedRx={this.props.deleteSavedRx}
+									commentSavedRx={this.props.commentSavedRx}
+								/>
 							) : null
 							// <Button onClick={this.showSavedRx}>
 							// 	See Saved Prescriptions
