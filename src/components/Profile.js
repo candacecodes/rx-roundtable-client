@@ -19,6 +19,24 @@ export default class Profile extends Component {
 		this.setState({ rxes: getRxes.split(",") });
 	};
 
+	deleteSavedRx = (rx) => {
+		console.log("delete function savedRx", rx);
+		// console.log(this.state);
+		console.log("delete", rx);
+		// update state to hold rxes
+		var existing = localStorage.getItem("rxes");
+		existing = existing ? existing.split(",") : [];
+		// this.setState({ rxes: existing });
+
+		this.setState({
+			rxes: this.state.rxes.filter((eachrx) => eachrx !== rx),
+		});
+
+		console.log(this.state.rxes);
+		// existing.push(`${rx}`);
+		// localStorage.setItem("rxes", existing.toString());
+	};
+
 	render() {
 		// user information
 		// console.log(this.props.user);
@@ -106,7 +124,7 @@ export default class Profile extends Component {
 							this.state.rxes.length > 0 ? (
 								<SavedPrescriptionsContainer
 									rxes={this.state.rxes}
-									deleteSavedRx={this.props.deleteSavedRx}
+									deleteSavedRx={this.deleteSavedRx}
 									commentSavedRx={this.props.commentSavedRx}
 								/>
 							) : null

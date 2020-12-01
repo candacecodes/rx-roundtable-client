@@ -3,7 +3,8 @@ import Button from "react-bootstrap/Button";
 
 export default class SavedPrescriptionSingle extends Component {
 	handleDelete = () => {
-		this.props.deleteSavedRx();
+		this.props.deleteSavedRx(this.props.rx);
+		// console.log(this.props.rx);
 	};
 
 	handleComment = () => {

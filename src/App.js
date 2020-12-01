@@ -136,9 +136,23 @@ class App extends Component {
 		window.alert("saved to profile");
 	};
 
-	deleteSavedRx = () => {
-		console.log("delete function savedRx");
-	};
+	// deleteSavedRx = (rx) => {
+	// 	console.log("delete function savedRx", rx);
+	// 	// console.log(this.state);
+	// 	console.log("delete", rx);
+	// 	// update state to hold rxes
+	// 	var existing = localStorage.getItem("rxes");
+	// 	existing = existing ? existing.split(",") : [];
+	// 	// this.setState({ rxes: existing });
+
+	// 	// this.setState({
+	// 	// 	rxes: this.state.rxes.filter((eachrx) => eachrx !== rx),
+	// 	// });
+
+	// 	console.log(this.state.rxes);
+	// 	// existing.push(`${rx}`);
+	// 	// localStorage.setItem("rxes", existing.toString());
+	// };
 
 	commentSavedRx = () => {
 		console.log("comment function for savedRx");
@@ -195,7 +209,7 @@ class App extends Component {
 										handleDelete={this.handleDelete}
 										handleEdit={this.handleEdit}
 										rxes={this.state.rxes}
-										deleteSavedRx={this.deleteSavedRx}
+										// deleteSavedRx={this.deleteSavedRx}
 										commentSavedRx={this.commentSavedRx}
 									/>
 								)}

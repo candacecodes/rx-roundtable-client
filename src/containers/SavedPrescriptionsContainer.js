@@ -24,6 +24,7 @@ export default class SavedPrescriptionsContainer extends Component {
 					{this.props.rxes.map((rx) => (
 						<SavedPrescriptionSingle
 							rx={rx}
+							key={Math.random()} // to prevent key error in console
 							deleteSavedRx={this.props.deleteSavedRx}
 							commentSavedRx={this.props.commentSavedRx}
 						/>
