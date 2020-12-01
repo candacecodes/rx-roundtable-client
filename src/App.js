@@ -17,6 +17,7 @@ class App extends Component {
 		results: {},
 		user: { username: "" },
 		search: "",
+		rxes: [],
 	};
 
 	handleHome = () => <Welcome username={this.state.user.username} />;
@@ -55,7 +56,7 @@ class App extends Component {
 	};
 
 	handleLogout = () => {
-		localStorage.removeItem("token");
+		localStorage.clear();
 		this.setState({ user: {} });
 	};
 
@@ -110,8 +111,52 @@ class App extends Component {
 				this.setState({ results: data.results["0"] });
 				// console.log(data);
 			});
-		// console.log(data.results["0"].patient));
+		// this.mapResults();
 	};
+
+	saveRx = (rx) => {
+		// push rx into localStorage rx
+		var existing = localStorage.getItem("rxes");
+		existing = existing ? existing.split(",") : [];
+		existing.push(`${rx}`);
+		localStorage.setItem("rxes", existing.toString());
+
+		// fetch("http://localhost:3000/rxes", {
+		// 	method: "POST",
+		// 	headers: {
+		// 		"Content-Type": "application/json",
+		// 	},
+		// 	body: JSON.stringify(data),
+		// }).then((response) => response.json());
+
+		if (!this.state.rxes.includes(rx)) {
+			this.setState({ rxes: [...this.state.rxes, rx] });
+		}
+		console.log(this.state);
+		window.alert("saved to profile");
+	};
+
+	// deleteSavedRx = (rx) => {
+	// 	console.log("delete function savedRx", rx);
+	// 	// console.log(this.state);
+	// 	console.log("delete", rx);
+	// 	// update state to hold rxes
+	// 	var existing = localStorage.getItem("rxes");
+	// 	existing = existing ? existing.split(",") : [];
+	// 	// this.setState({ rxes: existing });
+
+	// 	// this.setState({
+	// 	// 	rxes: this.state.rxes.filter((eachrx) => eachrx !== rx),
+	// 	// });
+
+	// 	console.log(this.state.rxes);
+	// 	// existing.push(`${rx}`);
+	// 	// localStorage.setItem("rxes", existing.toString());
+	// };
+
+	// commentSavedRx = () => {
+	// 	console.log("comment function for savedRx");
+	// };
 
 	componentDidMount() {
 		// holds {jwt, user: {id, username}}
@@ -151,6 +196,7 @@ class App extends Component {
 										handleSearch={this.handleSearch}
 										result={this.state.results}
 										search={this.state.search}
+										saveRx={this.saveRx}
 									/>
 								)}
 							/>
@@ -162,6 +208,9 @@ class App extends Component {
 										user={this.state.user}
 										handleDelete={this.handleDelete}
 										handleEdit={this.handleEdit}
+										rxes={this.state.rxes}
+										// deleteSavedRx={this.deleteSavedRx}
+										// commentSavedRx={this.commentSavedRx}
 									/>
 								)}
 							/>

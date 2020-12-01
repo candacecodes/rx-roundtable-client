@@ -1,13 +1,50 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
+import RxSingle from "./RxSingle";
+import SavedPrescriptionsContainer from "../containers/SavedPrescriptionsContainer";
 
 export default class Profile extends Component {
 	state = {
-		editable: false,
+		rxes: [],
+	};
+
+	showSavedRx = () => {
+		// console.log("saved prescriptions");
+
+		// get rxes from local storage
+		const getRxes = localStorage.getItem("rxes");
+		// console.log(getRxes);
+
+		// set state of rxes from result
+		this.setState({ rxes: getRxes.split(",") });
+	};
+
+	commentSavedRx = () => {
+		console.log("comment function for savedRx");
+	};
+
+	deleteSavedRx = (rx) => {
+		console.log("delete function savedRx", rx);
+		// console.log(this.state);
+		console.log("delete", rx);
+		// update state to hold rxes
+		var existing = localStorage.getItem("rxes");
+		existing = existing ? existing.split(",") : [];
+		// this.setState({ rxes: existing });
+
+		this.setState({
+			rxes: this.state.rxes.filter((eachrx) => eachrx !== rx),
+		});
+
+		console.log(this.state.rxes);
+		// existing.push(`${rx}`);
+		// localStorage.setItem("rxes", existing.toString());
 	};
 
 	render() {
-		console.log(this.props.user);
+		// user information
+		// console.log(this.props.user);
+
 		return (
 			<>
 				<div className="page-content page-container" id="page-content">
@@ -25,8 +62,8 @@ export default class Profile extends Component {
 													alt="User-Profile-Image"
 												> */}{" "}
 												</div>
-												<h6 className="f-w-600">Patient Profile</h6>
-												<p>Patient Name</p> {this.props.user.username}
+												<h6 className="f-w-600">User Profile</h6>
+												<p>User Name</p> {this.props.user.username}
 												<i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
 											</div>
 										</div>
@@ -84,6 +121,22 @@ export default class Profile extends Component {
 								</div>
 							</div>
 						</div>
+						<Button variant="outline-success" onClick={this.showSavedRx}>
+							See Saved Prescriptions
+						</Button>
+						{
+							this.state.rxes.length > 0 ? (
+								<SavedPrescriptionsContainer
+									rxes={this.state.rxes}
+									deleteSavedRx={this.deleteSavedRx}
+									commentSavedRx={this.commentSavedRx}
+								/>
+							) : null
+							// <Button onClick={this.showSavedRx}>
+							// 	See Saved Prescriptions
+							// </Button>
+							// <Button>No Saved Prescriptions</Button>
+						}
 					</div>
 				</div>
 			</>

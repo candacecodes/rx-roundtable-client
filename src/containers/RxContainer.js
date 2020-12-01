@@ -8,10 +8,12 @@ export default class RxContainer extends Component {
 		effects: {},
 	};
 
-	mapResults = () => {
-		// console.log(this.props.result);
-		// this.props.result.map((info) => console.log(info));
-	};
+	// mapResults = () => {
+	// 	console.log(
+	// 		this.props.result.patient.reaction.map((rxn) => console.log(rxn))
+	// 	);
+	// 	// this.props.result.map((info) => console.log(info));
+	// };
 	render() {
 		// console.log(this.props.result);
 		// console.log(this.props.search);
@@ -19,11 +21,26 @@ export default class RxContainer extends Component {
 		// map through and render
 
 		return (
-			<div>
-				<div className="header">Search results for {this.props.search}</div>
-				{console.log(this.props.result.patient.reaction)}
-				{/* {this.mapResults} */}
-			</div>
+			<>
+				<div>
+					<div className="header">Search Results</div>
+					<br />{" "}
+					<div>
+						<>
+							{this.props.result.patient ? (
+								<RxSingle
+									result={this.props.result.patient}
+									search={this.props.search}
+									saveRx={this.props.saveRx}
+								/>
+							) : (
+								"no result"
+							)}{" "}
+						</>{" "}
+					</div>
+					{/* {this.mapResults()} */}
+				</div>
+			</>
 		);
 	}
 }
