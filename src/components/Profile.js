@@ -64,7 +64,7 @@ export default class Profile extends Component {
 												> */}{" "}
 												</div>
 												<h6 className="f-w-600">User Profile</h6>
-												<p>User Name</p> {this.props.user.username}
+												<p>Name</p> {this.props.user.username}
 												<i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
 											</div>
 										</div>
