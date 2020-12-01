@@ -105,10 +105,10 @@ export default class Profile extends Component {
 									</div>
 								</div>
 							</div>
-							<Button variant="outline-success" onClick={this.showSavedRx}>
-								See Saved Prescriptions
-							</Button>
 						</div>
+						<Button variant="outline-success" onClick={this.showSavedRx}>
+							See Saved Prescriptions
+						</Button>
 						{
 							this.state.rxes.length > 0 ? (
 								<SavedPrescriptionsContainer rxes={this.state.rxes} />
