@@ -85,9 +85,8 @@ export default class Profile extends Component {
 													alt="User-Profile-Image"
 												> */}{" "}
 												</div>
-												<h6 className="f-w-600">User Profile</h6>
-												<p>Name</p> {this.props.user.username}
-												<i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+												<h6 className="f-w-600">User Profile Card</h6>
+												<p>Username: {this.props.user.username} </p>
 											</div>
 										</div>
 										<div className="col-sm-8">
@@ -107,9 +106,7 @@ export default class Profile extends Component {
 														<h6 className="text-muted f-w-400">98979989898</h6>
 													</div> */}
 												</div>
-												<h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">
-													User Information
-												</h6>
+												<h5>User Information</h5>
 												<div className="row">
 													<div className="col-sm-6">
 														<p className="m-b-10 f-w-600">Age </p>
@@ -117,7 +114,7 @@ export default class Profile extends Component {
 															text="Click to Update Age"
 															labelClassName="myLabelClass"
 															inputClassName="myInputClass"
-															inputWidth="200px"
+															inputWidth="100px"
 															inputHeight="25px"
 															inputMaxLength="50"
 															// labelFontWeight="bold"
@@ -132,9 +129,9 @@ export default class Profile extends Component {
 															text="Click to Update Note"
 															labelClassName="myLabelClass"
 															inputClassName="myInputClass"
-															inputWidth="200px"
+															inputWidth="100px"
 															inputHeight="25px"
-															inputMaxLength="50"
+															inputMaxLength="150"
 															// labelFontWeight="bold"
 															// inputFontWeight="bold"
 															onFocus={this._handleFocus}
@@ -142,13 +139,13 @@ export default class Profile extends Component {
 														/>{" "}
 													</div>
 												</div>
-												<Button
+												{/* <Button
 													onClick={this.handleEdit}
 													variant="outline-secondary"
 												>
 													{" "}
 													Edit Profile{" "}
-												</Button>{" "}
+												</Button>{" "} */}
 												<Button
 													onClick={this.props.handleDelete}
 													variant="outline-secondary"
