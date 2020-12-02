@@ -17,11 +17,15 @@ export default class CommentsContainer extends Component {
 	};
 
 	addComment = (input) => {
-		this.setState((prevState) => ({
-			comments: [...prevState.comments, input],
-		}));
-		console.log(this.state.comments);
-		alert("Comment Added");
+		if (input == "") {
+			alert("note is empty, please try again");
+		} else {
+			this.setState((prevState) => ({
+				comments: [...prevState.comments, input],
+			}));
+			console.log(this.state.comments);
+			alert("Comment Added");
+		}
 	};
 
 	mapComments = () => {
