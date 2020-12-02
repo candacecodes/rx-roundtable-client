@@ -28,12 +28,25 @@ export default class CommentsContainer extends Component {
 		this.state.comments.map((comment) => <SingleComment comment={comment} />);
 	};
 
+	deleteComment = (comment) => {
+		console.log("delete comment");
+		this.setState({
+			comments: this.state.comments.filter(
+				(eachcomment) => eachcomment !== comment
+			),
+		});
+	};
+
 	render() {
 		return (
 			<div>
 				<br />
 				{this.state.comments.map((comment) => (
-					<SingleComment key={comment} comment={comment} />
+					<SingleComment
+						key={comment}
+						comment={comment}
+						deleteComment={this.deleteComment}
+					/>
 				))}
 
 				<Button
