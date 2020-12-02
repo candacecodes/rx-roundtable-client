@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import AddComment from "../components/AddComment";
+import SingleComment from "../components/SingleComment";
 
 export default class CommentsContainer extends Component {
 	state = {
@@ -23,11 +24,18 @@ export default class CommentsContainer extends Component {
 		alert("Comment Added");
 	};
 
+	mapComments = () => {
+		this.state.comments.map((comment) => <SingleComment comment={comment} />);
+	};
+
 	render() {
 		return (
 			<div>
 				<br />
-				{/* {this.mapComments} */}
+				{this.state.comments.map((comment) => (
+					<SingleComment key={comment} comment={comment} />
+				))}
+
 				<Button
 					onClick={this.handleAddCommentButton}
 					size="sm"
