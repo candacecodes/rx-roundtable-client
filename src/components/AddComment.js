@@ -16,6 +16,7 @@ export default class AddComment extends Component {
 		// console.log("handle form", this.state.input);
 		// pass down to addComment function
 		this.props.addComment(this.state.input);
+		this.refs.form.value = "";
 	};
 	render() {
 		console.log("Add Comment Form");
@@ -28,6 +29,7 @@ export default class AddComment extends Component {
 						size="sm"
 						type="text"
 						placeholder="Add comment here"
+						ref="form"
 					/>
 					<Button
 						onClick={this.handleForm}
