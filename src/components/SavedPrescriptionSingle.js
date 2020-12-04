@@ -17,6 +17,7 @@ export default class SavedPrescriptionSingle extends Component {
 		}));
 		console.log(this.state);
 	};
+
 	render() {
 		return (
 			<div>
@@ -31,7 +32,7 @@ export default class SavedPrescriptionSingle extends Component {
 					</Button>{" "}
 					{this.state.seeComment ? <CommentsContainer /> : null}
 					<Button onClick={this.handleDelete} variant="outline-dark" size="sm">
-						Delete Rx
+						Delete
 					</Button>
 					<br />
 				</div>

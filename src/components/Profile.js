@@ -18,6 +18,9 @@ export default class Profile extends Component {
 
 	_handleFocusOut(text) {
 		console.log("Left editor with text: " + text);
+		this.setState((prevState) => ({
+			age: text,
+		}));
 	}
 
 	state = {
@@ -26,8 +29,47 @@ export default class Profile extends Component {
 		note: "",
 	};
 
-	handleEdit = () => {
-		console.log("edit");
+	// handles state for age change
+	handleAgeChange = (age) => {
+		console.log(age);
+		this.setState((prevState) => ({
+			age: age,
+		}));
+	};
+
+	// handles state for note change
+	handleNoteChange = (note) => {
+		console.log(note);
+		this.setState((prevState) => ({
+			note: note,
+		}));
+	};
+
+	// handles save change
+	handleEditSubmit = () => {
+		// get token
+		var existing = localStorage.getItem("token");
+		var token = existing;
+
+		console.log(this.props.user.id);
+		console.log("age", this.state.age);
+		console.log("note", this.state.note);
+
+		let data = {
+			age: this.state.age,
+			note: this.state.note,
+		};
+
+		fetch(`http://localhost:3000/users/${this.props.user.id}`, {
+			method: "PATCH",
+			body: JSON.stringify(data),
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${token}`,
+			},
+		})
+			.then((res) => res.json())
+			.then((json) => console.log(json));
 	};
 
 	showSavedRx = () => {
@@ -111,7 +153,12 @@ export default class Profile extends Component {
 													<div className="col-sm-6">
 														<p className="m-b-10 f-w-600">Age </p>
 														<EditableLabel
-															text="Click to Update Age"
+															// onChange={this.handleAgeChange}
+															text={
+																this.props.age
+																	? this.props.age
+																	: "Click to Update Age"
+															}
 															labelClassName="myLabelClass"
 															inputClassName="myInputClass"
 															inputWidth="100px"
@@ -120,12 +167,13 @@ export default class Profile extends Component {
 															// labelFontWeight="bold"
 															// inputFontWeight="bold"
 															onFocus={this._handleFocus}
-															onFocusOut={this._handleFocusOut}
+															onFocusOut={this.handleAgeChange}
 														/>
 													</div>
 													<div className="col-sm-6">
 														<p className="m-b-10 f-w-600">Notes</p>
 														<EditableLabel
+															onChange={this.handleNoteChange}
 															text="Click to Update Note"
 															labelClassName="myLabelClass"
 															inputClassName="myInputClass"
@@ -135,17 +183,17 @@ export default class Profile extends Component {
 															// labelFontWeight="bold"
 															// inputFontWeight="bold"
 															onFocus={this._handleFocus}
-															onFocusOut={this._handleFocusOut}
+															onFocusOut={this.handleNoteChange}
 														/>{" "}
 													</div>
 												</div>
-												{/* <Button
-													onClick={this.handleEdit}
+												<Button
+													onClick={this.handleEditSubmit}
 													variant="outline-secondary"
 												>
 													{" "}
-													Edit Profile{" "}
-												</Button>{" "} */}
+													Save Changes{" "}
+												</Button>{" "}
 												<Button
 													onClick={this.props.handleDelete}
 													variant="outline-secondary"
