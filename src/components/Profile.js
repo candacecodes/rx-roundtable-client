@@ -60,6 +60,7 @@ export default class Profile extends Component {
 			note: this.state.note,
 		};
 
+		//backend fetch
 		fetch(`http://localhost:3000/users/${this.props.user.id}`, {
 			method: "PATCH",
 			body: JSON.stringify(data),
@@ -70,6 +71,20 @@ export default class Profile extends Component {
 		})
 			.then((res) => res.json())
 			.then((json) => console.log(json));
+	};
+
+	deleteProfile = () => {
+		var existing = localStorage.getItem("token");
+		var token = existing;
+
+		fetch(`http://localhost:3000/users/${this.props.user.id}`, {
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${token}`,
+			},
+		});
+		alert("Your account has been deleted");
 	};
 
 	showSavedRx = () => {
@@ -127,8 +142,8 @@ export default class Profile extends Component {
 													alt="User-Profile-Image"
 												> */}{" "}
 												</div>
-												<h6 className="f-w-600">User Profile Card</h6>
-												<p>Username: {this.props.user.username} </p>
+												<h4 className="f-w-600">Profile Card</h4>
+												<h5>Username: {this.props.user.username} </h5>
 											</div>
 										</div>
 										<div className="col-sm-8">
@@ -188,6 +203,7 @@ export default class Profile extends Component {
 													</div>
 												</div>
 												<Button
+													size="sm"
 													onClick={this.handleEditSubmit}
 													variant="outline-secondary"
 												>
@@ -195,7 +211,8 @@ export default class Profile extends Component {
 													Save Changes{" "}
 												</Button>{" "}
 												<Button
-													onClick={this.props.handleDelete}
+													size="sm"
+													onClick={this.deleteProfile}
 													variant="outline-secondary"
 												>
 													{" "}
