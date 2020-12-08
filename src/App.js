@@ -60,6 +60,29 @@ class App extends Component {
 		this.setState({ user: {} });
 	};
 
+	// handleProfileEdit= (description, id) => {
+	// also update state in profile for
+	// 	console.log(description);
+	// 	console.log("id " + id);
+
+	// 	let data = {
+	// 	  age: age, note: note
+	// 	};
+
+	// 	fetch(`http://localhost:3000/users/${id}`, {
+	// 	  method: "PATCH",
+	// 	  headers: {
+	// 		"Content-Type": "application/json",
+	// 		Accept: "application/json",
+	// 	  },
+	// 	  body: JSON.stringify(data),
+	// 	})
+	// 	  .then((res) => res.json())
+	// 	  .then((json) => console.log(json)
+	// 		});
+	// 	  });
+	//   };
+
 	handleDelete = () => {
 		console.log("delete");
 		// fetch(`http://localhost:3000/users/${this.state.user.id}`, {
@@ -69,10 +92,6 @@ class App extends Component {
 		// 	},
 		// });
 		// this.renderLogout();
-	};
-
-	handleEdit = () => {
-		console.log("edit");
 	};
 
 	renderLogout = () => {
@@ -207,7 +226,7 @@ class App extends Component {
 									<Profile
 										user={this.state.user}
 										handleDelete={this.handleDelete}
-										handleEdit={this.handleEdit}
+										// handleEdit={this.handleEdit}
 										rxes={this.state.rxes}
 										// deleteSavedRx={this.deleteSavedRx}
 										// commentSavedRx={this.commentSavedRx}

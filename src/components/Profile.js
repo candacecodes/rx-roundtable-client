@@ -2,10 +2,89 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import RxSingle from "./RxSingle";
 import SavedPrescriptionsContainer from "../containers/SavedPrescriptionsContainer";
+import EditableLabel from "react-inline-editing";
 
 export default class Profile extends Component {
+	constructor(props) {
+		super(props);
+
+		this._handleFocus = this._handleFocus.bind(this);
+		this._handleFocusOut = this._handleFocusOut.bind(this);
+	}
+
+	_handleFocus(text) {
+		console.log("Focused with text: " + text);
+	}
+
+	_handleFocusOut(text) {
+		console.log("Left editor with text: " + text);
+		this.setState((prevState) => ({
+			age: text,
+		}));
+	}
+
 	state = {
 		rxes: [],
+		age: "",
+		note: "",
+	};
+
+	// handles state for age change
+	handleAgeChange = (age) => {
+		console.log(age);
+		this.setState((prevState) => ({
+			age: age,
+		}));
+	};
+
+	// handles state for note change
+	handleNoteChange = (note) => {
+		console.log(note);
+		this.setState((prevState) => ({
+			note: note,
+		}));
+	};
+
+	// handles save change
+	handleEditSubmit = () => {
+		// get token
+		var existing = localStorage.getItem("token");
+		var token = existing;
+
+		console.log(this.props.user.id);
+		console.log("age", this.state.age);
+		console.log("note", this.state.note);
+
+		let data = {
+			age: this.state.age,
+			note: this.state.note,
+		};
+
+		//backend fetch
+		fetch(`http://localhost:3000/users/${this.props.user.id}`, {
+			method: "PATCH",
+			body: JSON.stringify(data),
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${token}`,
+			},
+		})
+			.then((res) => res.json())
+			.then((json) => console.log(json));
+	};
+
+	deleteProfile = () => {
+		var existing = localStorage.getItem("token");
+		var token = existing;
+
+		fetch(`http://localhost:3000/users/${this.props.user.id}`, {
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${token}`,
+			},
+		});
+		alert("Your account has been deleted");
 	};
 
 	showSavedRx = () => {
@@ -21,6 +100,7 @@ export default class Profile extends Component {
 
 	commentSavedRx = () => {
 		console.log("comment function for savedRx");
+		return <div>Comment</div>;
 	};
 
 	deleteSavedRx = (rx) => {
@@ -62,9 +142,8 @@ export default class Profile extends Component {
 													alt="User-Profile-Image"
 												> */}{" "}
 												</div>
-												<h6 className="f-w-600">User Profile</h6>
-												<p>User Name</p> {this.props.user.username}
-												<i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+												<h4 className="f-w-600">Profile Card</h4>
+												<h5>Username: {this.props.user.username} </h5>
 											</div>
 										</div>
 										<div className="col-sm-8">
@@ -84,32 +163,56 @@ export default class Profile extends Component {
 														<h6 className="text-muted f-w-400">98979989898</h6>
 													</div> */}
 												</div>
-												<h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">
-													Rx
-												</h6>
+												<h5>User Information</h5>
 												<div className="row">
 													<div className="col-sm-6">
-														<p className="m-b-10 f-w-600">Rx 1 </p>
-														<h6 className="text-muted f-w-400">
-															Rx Information
-														</h6>
+														<p className="m-b-10 f-w-600">Age </p>
+														<EditableLabel
+															// onChange={this.handleAgeChange}
+															text={
+																this.props.age
+																	? this.props.age
+																	: "Click to Update Age"
+															}
+															labelClassName="myLabelClass"
+															inputClassName="myInputClass"
+															inputWidth="100px"
+															inputHeight="25px"
+															inputMaxLength="50"
+															// labelFontWeight="bold"
+															// inputFontWeight="bold"
+															onFocus={this._handleFocus}
+															onFocusOut={this.handleAgeChange}
+														/>
 													</div>
 													<div className="col-sm-6">
-														<p className="m-b-10 f-w-600">Rx 2</p>
-														<h6 className="text-muted f-w-400">
-															Rx Information
-														</h6>
+														<p className="m-b-10 f-w-600">Notes</p>
+														<EditableLabel
+															onChange={this.handleNoteChange}
+															text="Click to Update Note"
+															labelClassName="myLabelClass"
+															inputClassName="myInputClass"
+															inputWidth="100px"
+															inputHeight="25px"
+															inputMaxLength="150"
+															// labelFontWeight="bold"
+															// inputFontWeight="bold"
+															onFocus={this._handleFocus}
+															onFocusOut={this.handleNoteChange}
+														/>{" "}
 													</div>
 												</div>
 												<Button
-													onClick={this.props.handleEdit}
+													size="sm"
+													onClick={this.handleEditSubmit}
 													variant="outline-secondary"
 												>
 													{" "}
-													Edit Profile{" "}
+													Save Changes{" "}
 												</Button>{" "}
 												<Button
-													onClick={this.props.handleDelete}
+													size="sm"
+													onClick={this.deleteProfile}
 													variant="outline-secondary"
 												>
 													{" "}
